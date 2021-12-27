@@ -4,6 +4,7 @@ import Button from '../../components/customButton/Button'
 import { ClientAddWord, GetClientAllWords, DeleteWordById } from '../../services/services'
 import { Auth } from '../../services/context/useAuthentication'
 import style from './MainPage.module.css'
+import EditItem from './EditItem/EditItem'
 
 function MainPage() {
     const [form, setForm] = useState({
@@ -12,6 +13,7 @@ function MainPage() {
     })
     const [search, setSearch] = useState('');
     const [words, setWords] = useState([]);
+    const [updateWord, setUpdateWord] = useState(0);
     const [searchedWords, setSearchedWords] = useState([]);
     const { auth } = useContext(Auth);
 
@@ -55,6 +57,10 @@ function MainPage() {
             })
     }
 
+    const editItem = (item) => {
+        setUpdateWord(item)
+    }
+    console.log(updateWord);
     useEffect(() => {
         GetClientAllWords()
             .then(res => {
@@ -106,6 +112,7 @@ function MainPage() {
                             <div className={style.national}>{word.national}:</div>
                             <div className={style.foreign}>{word.foreign}</div>
                             <div 
+                                onClick={() => editItem(word)}
                                 className={style.edit} 
                             />
                             <div
@@ -118,6 +125,7 @@ function MainPage() {
                             <div className={style.national}>{word.national}:</div>
                             <div className={style.foreign}>{word.foreign}</div>
                             <div 
+                                onClick={() => editItem(word)}
                                 className={style.edit} 
                             />
                             <div
@@ -131,6 +139,7 @@ function MainPage() {
                 </div>
             </div>
             }
+            <EditItem modalIsOpen={updateWord !== 0 ? true : false} item={updateWord} closeModal={() => setUpdateWord(0)} />
         </>
     )
 }

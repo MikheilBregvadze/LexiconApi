@@ -1,0 +1,18 @@
+.header {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exit {
+    cursor: pointer;
+}
+
+.exit:hover {
+    color: #7c6363;
+    transition: all .2s ease-in-out;
+}

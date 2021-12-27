@@ -1,0 +1,66 @@
+.main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main form {
+    display: flex;
+}
+
+.main form div {
+    margin-right: 20px;
+} 
+
+.items {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid antiquewhite;
+}
+
+.items.empty {
+    border: none;
+}
+
+.items:last-child {
+    border-bottom: none;
+}
+
+.item {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-family: "Regular";
+    border-bottom: 1px solid antiquewhite;
+}
+
+.national {
+    width: 240px;
+    margin-left: 20px;
+    font-family: "GE_Regular";
+}
+
+.foreign {
+    width: 240px;
+}
+
+.search {
+    margin-top: 20px;
+}
+
+.remove {
+    width: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: url('../../assets/images/icons/trash.png');
+}
+
+.edit {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+    background: url('../../assets/images/icons/edit.png');
+}

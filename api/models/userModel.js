@@ -8,6 +8,13 @@ const userSchema = mongoose.Schema({
     },
     words: [
         {
+            isFavorite: { type: Boolean, required: true },
+            national: { type: String, required: true },
+            foreign: { type: String, required: true }
+        }
+    ],
+    favoriteWords: [
+        {
             national: { type: String, required: true },
             foreign: { type: String, required: true }
         }

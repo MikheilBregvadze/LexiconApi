@@ -122,35 +122,43 @@ function MainPage() {
                         <div key={index} className={style.item}>
                             <div className={style.national}>{word.national}:</div>
                             <div className={style.foreign}>{word.foreign}</div>
-                            <div
-                                className={style.favorite}
-                                // onClick={() => editItem(word)}
-                            />
-                            <div 
-                                className={style.edit}
-                                onClick={() => editItem(word)}
-                            />
-                            <div
-                                className={style.remove}
-                                onClick={(e) => deleteWord(word._id, e)}
-                            />
+                            <div className={style.options}>
+                                {!word.isFavorite &&
+                                <div
+                                    className={style.favorite}
+                                    // onClick={() => editItem(word)}
+                                />
+                                }
+                                <div
+                                    onClick={() => editItem(word)}
+                                    className={style.edit}
+                                />
+                                <div
+                                    className={style.remove}
+                                    onClick={(e) => deleteWord(word._id, e)}
+                                />
+                            </div>
                         </div>
                     )) : words.length > 0 ? words.map((word, index) => (
                         <div key={index} className={style.item}>
                             <div className={style.national}>{word.national}:</div>
                             <div className={style.foreign}>{word.foreign}</div>
-                            <div
-                                className={style.favorite}
-                                // onClick={() => editItem(word)}
-                            />
-                            <div 
-                                onClick={() => editItem(word)}
-                                className={style.edit} 
-                            />
-                            <div
-                                className={style.remove}
-                                onClick={(e) => deleteWord(word._id, e)}
-                            />
+                            <div className={style.options}>
+                                {!word.isFavorite &&
+                                <div
+                                    className={style.favorite}
+                                    // onClick={() => editItem(word)}
+                                />
+                                }
+                                <div
+                                    onClick={() => editItem(word)}
+                                    className={style.edit}
+                                />
+                                <div
+                                    className={style.remove}
+                                    onClick={(e) => deleteWord(word._id, e)}
+                                />
+                            </div>
                         </div>
                     )) : 
                         <div>No more words yet!</div> 

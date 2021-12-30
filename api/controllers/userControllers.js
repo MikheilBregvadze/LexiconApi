@@ -33,6 +33,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         username,
         words: [],
+        favoriteWords: [],
         password,
     });
 
@@ -58,6 +59,7 @@ const addWord = asyncHandler(async (req, res) => {
     } 
 
     const newWordList = {
+        isFavorite: false,
         national,
         foreign
     }
@@ -107,6 +109,20 @@ const editWord = asyncHandler(async (req, res) => {
     }
 })
 
+const addWordToFavorites = asyncHandler(async (req, res) => {
+    const user = await User.findById(getUserId(req.headers.authorization));
+    const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
+    const alreadyExist = user.favoriteWords.find((r) => r._id.toString() === req.params.item_id.toString());
+    console.log(123123)
+    if (!alreadyExist) {
+        currentWord.isFavorite = true;
+        user.favoriteWords.push(currentWord);
+        await user.save();
+        res.status(201).json({ favoriteWords: user.favoriteWords });
+    } else {
+        res.status(404).json({ errorMessage: 'Word already exist' });
+    }
+})
 
 module.exports = {
     authUser,
@@ -114,7 +130,8 @@ module.exports = {
     editWord,
     deleteWord,
     getAllWords,
-    registerUser
+    registerUser,
+    addWordToFavorites
 };
 
 function getUserId(token) {

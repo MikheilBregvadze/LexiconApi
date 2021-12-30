@@ -49,6 +49,12 @@
     margin-top: 20px;
 }
 
+.options {
+    width: 13%;
+    display: flex;
+    justify-content: right;
+}
+
 .favorite {
     width: 20px;
     height: 20px;

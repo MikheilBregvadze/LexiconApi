@@ -33,6 +33,7 @@ function Login() {
                 <Input
                     placeholder="User Name"
                     name="name"
+                    type="text"
                     value={form.username}
                     onChangeHandler={onChangeHandler('username')}
                 />
@@ -41,6 +42,7 @@ function Login() {
                 <label htmlFor="password"></label>
                 <Input
                     placeholder="Password"
+                    type="password"
                     name="password"
                     value={form.password}
                     onChangeHandler={onChangeHandler('password')}

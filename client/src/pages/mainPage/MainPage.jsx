@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Input from '../../components/customInput/Input'
 import Button from '../../components/customButton/Button'
-import { ClientAddWord, GetClientAllWords, DeleteWordById } from '../../services/services'
-import { Auth } from '../../services/context/useAuthentication'
-import style from './MainPage.module.css'
 import EditItem from './EditItem/EditItem'
+import {
+    ClientAddWord,
+    GetClientAllWords,
+    DeleteWordById
+} from '../../services/services'
+import Notifications from "./Notifications/Notifications";
+import { Auth } from '../../services/context/useAuthentication'
+
+import style from './MainPage.module.css'
 
 function MainPage() {
     const [form, setForm] = useState({
@@ -15,6 +21,7 @@ function MainPage() {
     const [words, setWords] = useState([]);
     const [updateWord, setUpdateWord] = useState(0);
     const [searchedWords, setSearchedWords] = useState([]);
+    const [callNotification, setCallNotification] = useState(false);
     const { auth } = useContext(Auth);
 
     const onChangeHandler = (input) => (event) => {
@@ -32,12 +39,16 @@ function MainPage() {
     }
     
     const submitForm = (e) => {
+        setCallNotification(false);
         e.preventDefault();
         ClientAddWord(form)
             .then(res => {
                 if(res.status === 201) {
                     setWords(res.data.words);
                     setForm({ national: '', foreign: '' });
+                    setTimeout(() => {
+                        setCallNotification(true);
+                    }, 3000)
                 }
             })
             .catch(error => {
@@ -60,8 +71,8 @@ function MainPage() {
     const editItem = (item) => {
         setUpdateWord(item)
     }
-    console.log(updateWord);
     useEffect(() => {
+        if(!auth) return;
         GetClientAllWords()
             .then(res => {
                 if(res.status === 201) {
@@ -71,14 +82,14 @@ function MainPage() {
             .catch(error => {
                 console.log(error);
             })
-    }, [])
+    }, [auth])
 
     return (
         <>
             {auth && <div className={style.main}>
                 <form onSubmit={submitForm}>
                     <div className={style.formGroup}>
-                        <label htmlFor="national"></label>
+                        <label htmlFor="national" />
                         <Input
                             placeholder="National Language"
                             name="national"
@@ -87,7 +98,7 @@ function MainPage() {
                         />
                     </div>
                     <div className={style.formGroup}>
-                        <label htmlFor="foreign"></label>
+                        <label htmlFor="foreign" />
                         <Input
                             placeholder="Foreign Language"
                             name="foreign"
@@ -98,7 +109,7 @@ function MainPage() {
                     <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
                 </form>
                 <div className={style.formGroup + ' ' + style.search}>
-                    <label htmlFor="search"></label>
+                    <label htmlFor="search" />
                     <Input
                         placeholder="Search"
                         name="search"
@@ -139,7 +150,8 @@ function MainPage() {
                 </div>
             </div>
             }
-            <EditItem modalIsOpen={updateWord !== 0 ? true : false} item={updateWord} closeModal={() => setUpdateWord(0)} />
+            <EditItem modalIsOpen={updateWord !== 0} item={updateWord} closeModal={() => setUpdateWord(0)} updateWords={(words) => {setWords(words); setUpdateWord(0)}} />
+            <Notifications callNotification={callNotification} />
         </>
     )
 }

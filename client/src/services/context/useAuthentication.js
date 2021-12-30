@@ -20,6 +20,7 @@ export const useAuthentication = () => {
     const logOut = () => {
         setAuth(false);
         // setClientInfo(null);
+        localStorage.removeItem('clientInfo');
         localStorage.removeItem('accessToken');
     }
     return {

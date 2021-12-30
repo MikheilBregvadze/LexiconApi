@@ -12,7 +12,7 @@
 } 
 
 .items {
-    width: 100%;
+    width: 596px;
     margin-top: 20px;
     border-radius: 5px;
     border: 1px solid antiquewhite;
@@ -27,7 +27,7 @@
 }
 
 .item {
-    width: 100%;
+    width: 596px;
     height: 50px;
     display: flex;
     align-items: center;

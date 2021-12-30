@@ -34,3 +34,10 @@ body {
     background: #fff;
     font-family: 'Medium';
 }
+
+.ReactModal__Overlay  {
+    border: none !important;
+    outline: none !important;
+    backdrop-filter: blur(2px);
+    background: #ffffffbf !important;
+}

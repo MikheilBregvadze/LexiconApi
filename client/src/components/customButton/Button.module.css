@@ -6,4 +6,9 @@
     border-radius: 5px;
     font-family: 'Medium';
     background: antiquewhite;
+    transition: all .2s ease-in-out;
+}
+
+.button:hover {
+    background: #e3d3be;
 }

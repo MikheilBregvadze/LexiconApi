@@ -99,9 +99,9 @@ const editWord = asyncHandler(async (req, res) => {
     if (currentWord) {
         currentWord.national = national;
         currentWord.foreign = foreign;
-        user.words = currentWord;
+        // user.words = currentWord;
         await user.save();
-        res.status(201).json({ words: currentWord });
+        res.status(201).json({ words: user.words });
     } else {
         res.status(404).json({ errorMessage: 'Word already exist' });
     }

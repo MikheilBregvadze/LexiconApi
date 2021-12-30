@@ -28,6 +28,15 @@ export function AuthorizedDelete(url, data) {
     })
 }
 
+export function AuthorizedPut(url, data) {
+    let accessToken = getItemFromLocalStorage('accessToken');
+    return axios.put(url, data, {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+}
+
 export const ClientAuthorization = (data) => {
     return axios.post('/Api/Client/Login', data);
 }
@@ -42,4 +51,8 @@ export const GetClientAllWords = () => {
 
 export const DeleteWordById = (id) => {
     return AuthorizedDelete('/Api/Client/DeleteWord/' + id);
+}
+
+export const UpdatedWord = (id, data) => {
+    return AuthorizedPut('/Api/Client/EditWord/' + id, data);
 }

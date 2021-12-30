@@ -49,18 +49,40 @@
     margin-top: 20px;
 }
 
-.remove {
-    width: 20px;
+.favorite {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    margin-right: 10px;
+    transition: all .2s ease-in-out;
+    background: url('../../assets/images/icons/star.png');
+}
+
+.favorite:hover {
+    background: url('../../assets/images/icons/starHover.png');
+}
+
+.remove {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
     background: url('../../assets/images/icons/trash.png');
+}
+
+.remove:hover {
+    background: url('../../assets/images/icons/trashHover.png');
 }
 
 .edit {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 10px;
+    transition: all .2s ease-in-out;
     background: url('../../assets/images/icons/edit.png');
+}
+
+.edit:hover {
+    background: url('../../assets/images/icons/editHover.png');
 }

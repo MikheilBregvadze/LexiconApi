@@ -1,26 +1,26 @@
 @font-face {
     font-family: "Thin";
-    src: url("./assets/fonts/Jost-Thin.ttf")
+    src: url("./assets/fonts/Jost-Thin.ttf");
 }
 
 @font-face {
     font-family: "Regular";
-    src: url("./assets/fonts/Jost-Regular.ttf")
+    src: url("./assets/fonts/Jost-Regular.ttf");
 }
 
 @font-face {
     font-family: "Medium";
-    src: url("./assets/fonts/Jost-Medium.ttf")
+    src: url("./assets/fonts/Jost-Medium.ttf");
 }
 
 @font-face {
     font-family: "Bold";
-    src: url("./assets/fonts/Jost-Bold.ttf")
+    src: url("./assets/fonts/Jost-Bold.ttf");
 }
 
 @font-face {
     font-family: "GE_Regular";
-    src: url("./assets/fonts/GE_Regular.ttf")
+    src: url("./assets/fonts/GE_Regular.ttf");
 }
 
 * {
@@ -32,6 +32,7 @@
 
 body {
     background: #fff;
+    user-select: none;
     font-family: 'Medium';
 }
 

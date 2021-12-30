@@ -122,9 +122,13 @@ function MainPage() {
                         <div key={index} className={style.item}>
                             <div className={style.national}>{word.national}:</div>
                             <div className={style.foreign}>{word.foreign}</div>
+                            <div
+                                className={style.favorite}
+                                // onClick={() => editItem(word)}
+                            />
                             <div 
+                                className={style.edit}
                                 onClick={() => editItem(word)}
-                                className={style.edit} 
                             />
                             <div
                                 className={style.remove}
@@ -135,6 +139,10 @@ function MainPage() {
                         <div key={index} className={style.item}>
                             <div className={style.national}>{word.national}:</div>
                             <div className={style.foreign}>{word.foreign}</div>
+                            <div
+                                className={style.favorite}
+                                // onClick={() => editItem(word)}
+                            />
                             <div 
                                 onClick={() => editItem(word)}
                                 className={style.edit} 

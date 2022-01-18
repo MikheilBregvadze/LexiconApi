@@ -6,10 +6,10 @@ export const isLocalhost = Boolean(
     )
 );
 
-const hostname = process.env.REACT_APP_API_URL || window.location.hostname;
+const hostname = process.env.REACT_APP_API_URL || window.location.origin;
 
 export const GetBaseUrl = () => {
-    return isLocalhost ? 'http://localhost:5000' : 'https://lexicone.herokuapp.com';
+    return isLocalhost ? 'http://localhost:5000' : hostname;
 }
 
 export const consoleLog = (msg) => {

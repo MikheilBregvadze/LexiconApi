@@ -6,7 +6,6 @@ const connectDB = require("./api/config/db.js");
 const corsOptions = require("./api/config/cors.js");
 const path = require("path");
 
-const userRoutes = require("./api/routes/userRoutes.js");
 
 dotenv.config();
 
@@ -14,7 +13,9 @@ connectDB();
 
 const app = express();
 
-app.use(cors())
+app.use(cors());
+app.use(express.json());
+const userRoutes = require("./api/routes/userRoutes.js");
 
 if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
@@ -30,8 +31,6 @@ if(process.env.NODE_ENV === 'production') {
         res.send('App Working...')
     })
 }
-
-app.use(express.json());
 
 app.use('/Api/Client', userRoutes);
 

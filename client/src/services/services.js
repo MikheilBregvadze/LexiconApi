@@ -2,9 +2,8 @@ import axios from "axios";
 import {GetBaseUrl, getItemFromLocalStorage} from "./common";
 
 export function AuthorizedGet(url) {
-    console.log(url);
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.get(url,{
+    return axios.get(GetBaseUrl() + url, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -13,7 +12,7 @@ export function AuthorizedGet(url) {
 
 export function AuthorizedPost(url, data) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.post(url, data, {
+    return axios.post(GetBaseUrl() + url, data, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -22,7 +21,7 @@ export function AuthorizedPost(url, data) {
 
 export function AuthorizedDelete(url, data) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.delete(url, { data,
+    return axios.delete(GetBaseUrl() + url, { data,
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -31,7 +30,7 @@ export function AuthorizedDelete(url, data) {
 
 export function AuthorizedPut(url, data) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.put(url, data, {
+    return axios.put(GetBaseUrl() + url, data, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -39,33 +38,33 @@ export function AuthorizedPut(url, data) {
 }
 
 export const ClientAuthorization = (data) => {
-    return axios.post(GetBaseUrl() + '/Client/Login', data);
+    return axios.post('/Client/Login', data);
 }
 
 export const ClientAddWord = (data) => {
-    return AuthorizedPost(GetBaseUrl() + '/Client/AddWord', data);
+    return AuthorizedPost('/Client/AddWord', data);
 }
 
 export const GetClientAllWords = () => {
-    return AuthorizedGet(GetBaseUrl() + '/Client/GetAllWords');
+    return AuthorizedGet('/Client/GetAllWords');
 }
 
 export const DeleteWordById = (id) => {
-    return AuthorizedDelete(GetBaseUrl() + '/Client/DeleteWord/' + id);
+    return AuthorizedDelete('/Client/DeleteWord/' + id);
 }
 
 export const UpdatedWord = (id, data) => {
-    return AuthorizedPut(GetBaseUrl() + '/Client/EditWord/' + id, data);
+    return AuthorizedPut('/Client/EditWord/' + id, data);
 }
 
 export const AddFavorite = (id) => {
-    return AuthorizedPost(GetBaseUrl() + '/Client/AddFavorite/' + id);
+    return AuthorizedPost('/Client/AddFavorite/' + id);
 }
 
 export const GetFavoriteWords = (id) => {
-    return AuthorizedGet(GetBaseUrl() + '/Client/GetFavoriteWords');
+    return AuthorizedGet('/Client/GetFavoriteWords');
 }
 
 export const DeleteFavoriteWordById = (id) => {
-    return AuthorizedDelete(GetBaseUrl() + '/Client/DeleteFavoriteWord/' + id);
+    return AuthorizedDelete('/Client/DeleteFavoriteWord/' + id);
 }

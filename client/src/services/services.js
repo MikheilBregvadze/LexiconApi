@@ -38,7 +38,7 @@ export function AuthorizedPut(url, data) {
 }
 
 export const ClientAuthorization = (data) => {
-    return axios.post('/Client/Login', data);
+    return axios.post('/Api/Client/Login', data);
 }
 
 export const ClientAddWord = (data) => {

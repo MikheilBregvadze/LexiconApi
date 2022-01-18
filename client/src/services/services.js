@@ -3,7 +3,7 @@ import {GetBaseUrl, getItemFromLocalStorage} from "./common";
 
 export function AuthorizedGet(url) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.get('https://lexicone.herokuapp.com/Api' + url, {
+    return axios.get(GetBaseUrl() + url, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -42,29 +42,29 @@ export const ClientAuthorization = (data) => {
 }
 
 export const ClientAddWord = (data) => {
-    return AuthorizedPost('/Client/AddWord', data);
+    return AuthorizedPost('/Api/Client/AddWord', data);
 }
 
 export const GetClientAllWords = () => {
-    return AuthorizedGet('/Client/GetAllWords');
+    return AuthorizedGet('/Api/Client/GetAllWords');
 }
 
 export const DeleteWordById = (id) => {
-    return AuthorizedDelete('/Client/DeleteWord/' + id);
+    return AuthorizedDelete('/Api/Client/DeleteWord/' + id);
 }
 
 export const UpdatedWord = (id, data) => {
-    return AuthorizedPut('/Client/EditWord/' + id, data);
+    return AuthorizedPut('/Api/Client/EditWord/' + id, data);
 }
 
 export const AddFavorite = (id) => {
-    return AuthorizedPost('/Client/AddFavorite/' + id);
+    return AuthorizedPost('/Api/Client/AddFavorite/' + id);
 }
 
 export const GetFavoriteWords = () => {
-    return AuthorizedGet('/Client/GetFavoriteWords');
+    return AuthorizedGet('/Api/Client/GetFavoriteWords');
 }
 
 export const DeleteFavoriteWordById = (id) => {
-    return AuthorizedDelete('/Client/DeleteFavoriteWord/' + id);
+    return AuthorizedDelete('/Api/Client/DeleteFavoriteWord/' + id);
 }

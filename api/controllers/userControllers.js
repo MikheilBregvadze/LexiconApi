@@ -72,6 +72,7 @@ const addWord = asyncHandler(async (req, res) => {
 const getAllWords = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserId(req.headers.authorization));
     if(user) {
+        console.log(user.words);
         res.status(201).json({ words: user.words });
     } else {
         res.status(404).json({ errorMessage: 'Word not exist' });

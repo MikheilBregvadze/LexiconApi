@@ -48,7 +48,7 @@ export const ClientAddWord = (data) => {
 export const GetClientAllWords = () => {
     return AuthorizedGet(GetBaseUrl() + '/Client/GetAllWords');
 }
-console.log(GetBaseUrl());
+console.log(GetBaseUrl(), '------ ' , GetBaseUrl() + '/Client/DeleteWord/');
 export const DeleteWordById = (id) => {
     return AuthorizedDelete(GetBaseUrl() + '/Client/DeleteWord/' + id);
 }

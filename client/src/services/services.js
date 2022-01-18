@@ -3,7 +3,7 @@ import {GetBaseUrl, getItemFromLocalStorage} from "./common";
 
 export function AuthorizedGet(url) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.get(GetBaseUrl() + url, {
+    return axios.get(url, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -12,7 +12,7 @@ export function AuthorizedGet(url) {
 
 export function AuthorizedPost(url, data) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.post(GetBaseUrl() + url, data, {
+    return axios.post(url, data, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -21,7 +21,7 @@ export function AuthorizedPost(url, data) {
 
 export function AuthorizedDelete(url, data) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.delete(GetBaseUrl() + url, { data,
+    return axios.delete(url, { data,
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -30,7 +30,7 @@ export function AuthorizedDelete(url, data) {
 
 export function AuthorizedPut(url, data) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.put(GetBaseUrl() + url, data, {
+    return axios.put(url, data, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }

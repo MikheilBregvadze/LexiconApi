@@ -14,6 +14,8 @@ connectDB();
 
 const app = express();
 
+app.use(cors())
+
 if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
@@ -23,11 +25,15 @@ if(process.env.NODE_ENV === 'production') {
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
+} else {
+    app.get('/', (req, res) => {
+        res.send('App Working...')
+    })
 }
 
 app.use(express.json());
 
-app.use('/Api/Client', cors(corsOptions), userRoutes);
+app.use('/Api/Client', userRoutes);
 
 app.get('/', (req, res) => {
     res.send('Api is running!');

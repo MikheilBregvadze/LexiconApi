@@ -27,7 +27,7 @@ function MainPage() {
     const [searchedWords, setSearchedWords] = useState([]);
     const [callNotification, setCallNotification] = useState(false);
     const { auth } = useContext(Auth);
-    console.log(process.env.PORT);
+
     const onChangeHandler = (input) => (event) => {
         setForm({ ...form, [input]: event.target.value });
         if(input === 'search') {

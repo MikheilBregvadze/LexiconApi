@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const cors = require('cors')
 const connectDB = require("./api/config/db.js");
-corsOptions = require("./api/config/cors.js");
+const corsOptions = require("./api/config/cors.js");
 const path = require("path");
 
 const userRoutes = require("./api/routes/userRoutes.js");

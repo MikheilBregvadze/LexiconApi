@@ -130,91 +130,91 @@ function MainPage() {
     return (
         <>
             {auth && 
-            <div className={style.main}>
-                <form onSubmit={submitForm}>
-                    <div className={style.formGroup}>
-                        <label htmlFor="national" />
-                        <Input
-                            placeholder="National Language"
-                            name="national"
-                            value={form.national}
-                            onChangeHandler={onChangeHandler('national')}
-                        />
-                    </div>
-                    <div className={style.formGroup}>
-                        <label htmlFor="foreign" />
-                        <Input
-                            placeholder="Foreign Language"
-                            name="foreign"
-                            value={form.foreign}
-                            onChangeHandler={onChangeHandler('foreign')}
-                        />
-                    </div>
-                    <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
-                </form>
-                <div className={style.formGroup + ' ' + style.search}>
-                    <label htmlFor="search" />
-                    <Input
-                        placeholder="Search"
-                        name="search"
-                        value={search}
-                        onChangeHandler={onChangeHandler('search')}
-                    />
-                </div>
-                <div className={style.row}>
-                    <div>   
-                        <h1>Words</h1>
-                        <div className={`${style.items} ${words.length > 0 ? '' : style.empty}`}>
-                            { searchedWords.length > 0 ? searchedWords.map((word, index) => (
-                                <div key={index} className={style.item}>
-                                    <div className={style.national}>{word.national}:</div>
-                                    <div className={style.foreign}>{word.foreign}</div>
-                                    <div className={style.options}>
-                                        {!word.isFavorite &&
-                                        <div
-                                            className={style.favorite}
-                                            onClick={() => addToFavorite(word._id)}
-                                        />
-                                        }
-                                        <div
-                                            onClick={() => editItem(word)}
-                                            className={style.edit}
-                                        />
-                                        <div
-                                            className={style.remove}
-                                            onClick={(e) => deleteWord(word._id, e)}
-                                        />
-                                    </div>
-                                </div>
-                            )) : words.length > 0 ? words.map((word, index) => (
-                                <div key={index} className={style.item}>
-                                    <div className={style.national}>{word.national}:</div>
-                                    <div className={style.foreign}>{word.foreign}</div>
-                                    <div className={style.options}>
-                                        {!word.isFavorite &&
-                                        <div
-                                            className={style.favorite}
-                                            onClick={() => addToFavorite(word._id)}
-                                        />
-                                        }
-                                        <div
-                                            onClick={() => editItem(word)}
-                                            className={style.edit}
-                                        />
-                                        <div
-                                            className={style.remove}
-                                            onClick={(e) => deleteWord(word._id, e)}
-                                        />
-                                    </div>
-                                </div>
-                            )) : 
-                                <div>No more words yet!</div> 
-                            }
+                <div className={style.main}>
+                    <form onSubmit={submitForm}>
+                        <div className={style.formGroup}>
+                            <label htmlFor="national" />
+                            <Input
+                                placeholder="National Language"
+                                name="national"
+                                value={form.national}
+                                onChangeHandler={onChangeHandler('national')}
+                            />
                         </div>
+                        <div className={style.formGroup}>
+                            <label htmlFor="foreign" />
+                            <Input
+                                placeholder="Foreign Language"
+                                name="foreign"
+                                value={form.foreign}
+                                onChangeHandler={onChangeHandler('foreign')}
+                            />
+                        </div>
+                        <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
+                    </form>
+                    <div className={style.formGroup + ' ' + style.search}>
+                        <label htmlFor="search" />
+                        <Input
+                            placeholder="Search"
+                            name="search"
+                            value={search}
+                            onChangeHandler={onChangeHandler('search')}
+                        />
                     </div>
-                    <Favorites favoriteWords={favoriteWords} updateFavorite={updateFavorite} />
+                    <div className={style.row}>
+                        <div>   
+                            <h1>Words</h1>
+                            <div className={`${style.items} ${words.length > 0 ? '' : style.empty}`}>
+                                { searchedWords.length > 0 ? searchedWords.map((word, index) => (
+                                    <div key={index} className={style.item}>
+                                        <div className={style.national}>{word.national}:</div>
+                                        <div className={style.foreign}>{word.foreign}</div>
+                                        <div className={style.options}>
+                                            {!word.isFavorite &&
+                                            <div
+                                                className={style.favorite}
+                                                onClick={() => addToFavorite(word._id)}
+                                            />
+                                            }
+                                            <div
+                                                onClick={() => editItem(word)}
+                                                className={style.edit}
+                                            />
+                                            <div
+                                                className={style.remove}
+                                                onClick={(e) => deleteWord(word._id, e)}
+                                            />
+                                        </div>
+                                    </div>
+                                )) : words.length > 0 ? words.map((word, index) => (
+                                    <div key={index} className={style.item}>
+                                        <div className={style.national}>{word.national}:</div>
+                                        <div className={style.foreign}>{word.foreign}</div>
+                                        <div className={style.options}>
+                                            {!word.isFavorite &&
+                                            <div
+                                                className={style.favorite}
+                                                onClick={() => addToFavorite(word._id)}
+                                            />
+                                            }
+                                            <div
+                                                onClick={() => editItem(word)}
+                                                className={style.edit}
+                                            />
+                                            <div
+                                                className={style.remove}
+                                                onClick={(e) => deleteWord(word._id, e)}
+                                            />
+                                        </div>
+                                    </div>
+                                )) : 
+                                    <div>No more words yet!</div> 
+                                }
+                            </div>
+                        </div>
+                        <Favorites favoriteWords={favoriteWords} updateFavorite={updateFavorite} />
+                    </div>
                 </div>
-            </div>
             }
             <EditItem modalIsOpen={updateWord !== 0} item={updateWord} closeModal={() => setUpdateWord(0)} updateWords={(words) => {setWords(words); setUpdateWord(0)}} />
             <Notifications callNotification={callNotification} />

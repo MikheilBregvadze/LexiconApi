@@ -3,7 +3,7 @@ import {GetBaseUrl, getItemFromLocalStorage} from "./common";
 
 export function AuthorizedGet(url) {
     let accessToken = getItemFromLocalStorage('accessToken');
-    return axios.get(GetBaseUrl() + url, {
+    return axios.get('https://lexicone.herokuapp.com/Api' + url, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -61,7 +61,7 @@ export const AddFavorite = (id) => {
     return AuthorizedPost('/Client/AddFavorite/' + id);
 }
 
-export const GetFavoriteWords = (id) => {
+export const GetFavoriteWords = () => {
     return AuthorizedGet('/Client/GetFavoriteWords');
 }
 

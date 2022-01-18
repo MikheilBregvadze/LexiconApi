@@ -127,6 +127,7 @@ function MainPage() {
         setWords(newArr);
         setFavoriteWords(favoriteWords);
     }
+    console.log(123);
     return (
         <>
             {auth && 
@@ -217,7 +218,7 @@ function MainPage() {
                 </div>
             }
             <EditItem modalIsOpen={updateWord !== 0} item={updateWord} closeModal={() => setUpdateWord(0)} updateWords={(words) => {setWords(words); setUpdateWord(0)}} />
-            <Notifications callNotification={callNotification} />
+            {/* <Notifications callNotification={callNotification} /> */}
         </>
     )
 }

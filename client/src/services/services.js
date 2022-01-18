@@ -56,3 +56,15 @@ export const DeleteWordById = (id) => {
 export const UpdatedWord = (id, data) => {
     return AuthorizedPut('/Api/Client/EditWord/' + id, data);
 }
+
+export const AddFavorite = (id) => {
+    return AuthorizedPost('/Api/Client/AddFavorite/' + id);
+}
+
+export const GetFavoriteWords = (id) => {
+    return AuthorizedGet('/Api/Client/GetFavoriteWords');
+}
+
+export const DeleteFavoriteWordById = (id) => {
+    return AuthorizedDelete('/Api/Client/DeleteFavoriteWord/' + id);
+}

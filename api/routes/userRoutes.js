@@ -8,7 +8,9 @@ const {
     deleteWord,
     getAllWords,
     registerUser,
-    addWordToFavorites
+    getFavoriteWords,
+    addWordToFavorites,
+    deleteFavoriteWord
 } = require('../controllers/userControllers');
 
 
@@ -18,6 +20,8 @@ router.route('/AddWord').post(protect, addWord);
 router.route('/GetAllWords').get(protect, getAllWords);
 router.route('/EditWord/:item_id').put(protect, editWord);
 router.route('/DeleteWord/:item_id').delete(protect, deleteWord);
+router.route('/GetFavoriteWords').get(protect, getFavoriteWords);
 router.route('/AddFavorite/:item_id').post(protect, addWordToFavorites);
+router.route('/DeleteFavoriteWord/:item_id').delete(protect, deleteFavoriteWord);
 
 module.exports = router;

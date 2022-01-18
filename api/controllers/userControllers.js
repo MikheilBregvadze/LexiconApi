@@ -81,8 +81,14 @@ const getAllWords = asyncHandler(async (req, res) => {
 const deleteWord = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserId(req.headers.authorization));
     const alreadyExist = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
-    if (alreadyExist) {
+    if (alreadyExist || favoriteWordsAlreadyExist) {
         const words = user.words.filter((r) => r._id.toString() !== req.params.item_id.toString());
+        
+        const favoriteWordsAlreadyExist = user.favoriteWords.find((r) => r._id.toString() === req.params.item_id.toString());
+        if(favoriteWordsAlreadyExist) {
+            const favoriteWords = user.favoriteWords.filter((r) => r._id.toString() !== req.params.item_id.toString());
+            user.favoriteWords = favoriteWords;
+        }
         user.words = words;
         await user.save();
         res.status(201).json({ words: words });
@@ -113,7 +119,6 @@ const addWordToFavorites = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserId(req.headers.authorization));
     const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
     const alreadyExist = user.favoriteWords.find((r) => r._id.toString() === req.params.item_id.toString());
-    console.log(123123)
     if (!alreadyExist) {
         currentWord.isFavorite = true;
         user.favoriteWords.push(currentWord);
@@ -124,6 +129,31 @@ const addWordToFavorites = asyncHandler(async (req, res) => {
     }
 })
 
+const getFavoriteWords = asyncHandler(async (req, res) => {
+    const user = await User.findById(getUserId(req.headers.authorization));
+    if(user) {
+        res.status(201).json({ favoriteWords: user.favoriteWords });
+    } else {
+        res.status(404).json({ errorMessage: 'Favorite Words not exist' });
+    }
+})
+
+const deleteFavoriteWord = asyncHandler(async (req, res) => {
+    const user = await User.findById(getUserId(req.headers.authorization));
+    const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
+    const alreadyExist = user.favoriteWords.find((r) => r._id.toString() === req.params.item_id.toString());
+    if (alreadyExist ) {
+        currentWord.isFavorite = false;
+        const favoriteWords = user.favoriteWords.filter((r) => r._id.toString() !== req.params.item_id.toString());
+        user.favoriteWords = favoriteWords;
+        await user.save();
+        res.status(201).json({ favoriteWords: favoriteWords });
+    } else {
+        res.status(404).json({ errorMessage: 'Word not exist' });
+    }
+})
+
+
 module.exports = {
     authUser,
     addWord,
@@ -131,7 +161,9 @@ module.exports = {
     deleteWord,
     getAllWords,
     registerUser,
-    addWordToFavorites
+    getFavoriteWords,
+    addWordToFavorites,
+    deleteFavoriteWord
 };
 
 function getUserId(token) {

@@ -6,6 +6,12 @@ export const isLocalhost = Boolean(
     )
 );
 
+const hostname = process.env.REACT_APP_API_URL || window.location.hostname;
+
+export const GetBaseUrl = () => {
+    return isLocalhost ? 'http://localhost:5000/Api' : hostname + '/api';
+}
+
 export const consoleLog = (msg) => {
     if(!isLocalhost) return;
     console.log(msg);

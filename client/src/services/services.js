@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getItemFromLocalStorage} from "./common";
+import {GetBaseUrl, getItemFromLocalStorage} from "./common";
 
 export function AuthorizedGet(url) {
     let accessToken = getItemFromLocalStorage('accessToken');
@@ -38,33 +38,33 @@ export function AuthorizedPut(url, data) {
 }
 
 export const ClientAuthorization = (data) => {
-    return axios.post('/Api/Client/Login', data);
+    return axios.post(GetBaseUrl() + '/Client/Login', data);
 }
 
 export const ClientAddWord = (data) => {
-    return AuthorizedPost('/Api/Client/AddWord', data);
+    return AuthorizedPost(GetBaseUrl() + '/Client/AddWord', data);
 }
 
 export const GetClientAllWords = () => {
-    return AuthorizedGet('/Api/Client/GetAllWords');
+    return AuthorizedGet(GetBaseUrl() + '/Client/GetAllWords');
 }
 
 export const DeleteWordById = (id) => {
-    return AuthorizedDelete('/Api/Client/DeleteWord/' + id);
+    return AuthorizedDelete(GetBaseUrl() + '/Client/DeleteWord/' + id);
 }
 
 export const UpdatedWord = (id, data) => {
-    return AuthorizedPut('/Api/Client/EditWord/' + id, data);
+    return AuthorizedPut(GetBaseUrl() + '/Client/EditWord/' + id, data);
 }
 
 export const AddFavorite = (id) => {
-    return AuthorizedPost('/Api/Client/AddFavorite/' + id);
+    return AuthorizedPost(GetBaseUrl() + '/Client/AddFavorite/' + id);
 }
 
 export const GetFavoriteWords = (id) => {
-    return AuthorizedGet('/Api/Client/GetFavoriteWords');
+    return AuthorizedGet(GetBaseUrl() + '/Client/GetFavoriteWords');
 }
 
 export const DeleteFavoriteWordById = (id) => {
-    return AuthorizedDelete('/Api/Client/DeleteFavoriteWord/' + id);
+    return AuthorizedDelete(GetBaseUrl() + '/Client/DeleteFavoriteWord/' + id);
 }

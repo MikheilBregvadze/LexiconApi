@@ -22,6 +22,8 @@ function MainPage() {
         foreign: ''
     })
     const [search, setSearch] = useState('');
+    const [errors, setErrors] = useState({});
+    const [errorMessage, setErrorMessage] = useState(null);
     const [words, setWords] = useState([]);
     const [favoriteWords, setFavoriteWords] = useState([]);
     const [updateWord, setUpdateWord] = useState(0);
@@ -29,9 +31,11 @@ function MainPage() {
     // const [callNotification, setCallNotification] = useState(false);    
     const [showModalView, setShowModalView] = useState(false);
     const { auth } = useContext(Auth);
-
+    
     const onChangeHandler = (input) => (event) => {
+        setErrorMessage(null);
         setForm({ ...form, [input]: event.target.value });
+        setErrors({...errors, [input]: null });
         if(input === 'search') {
             setSearch(event.target.value);
             const value = event.target.value.toLowerCase();
@@ -55,6 +59,17 @@ function MainPage() {
                     setTimeout(() => {
                         // setCallNotification(true);
                     }, 3000)
+                } else if(res.data.status === 400) {
+                    if(res.data.errorMessage) {
+                        setErrorMessage(res.data.errorMessage);
+                        setForm({
+                            national: '',
+                            foreign: ''
+                        });
+                    } else {
+                        setErrorMessage(null);
+                        setErrors(res.data.errors);
+                    }
                 }
             })
             .catch(error => {
@@ -80,12 +95,10 @@ function MainPage() {
     }
 
     const addToFavorite = (id) => {
-        const newArr = words;
-        newArr.map(item => item._id === id ? item.isFavorite = true : false)
-        setWords(newArr);
         AddFavorite(id)
             .then(res => {
                 if(res.status === 201) {
+                    setWords(res.data.words);
                     setFavoriteWords(res.data.favoriteWords);
                 }
             })
@@ -143,6 +156,7 @@ function MainPage() {
                                 value={form.national}
                                 onChangeHandler={onChangeHandler('national')}
                             />
+                            {errors['national'] && <span className={style.error}>{errors['national']}</span>}
                         </div>
                         <div className={style.formGroup}>
                             <label htmlFor="foreign" />
@@ -152,8 +166,10 @@ function MainPage() {
                                 value={form.foreign}
                                 onChangeHandler={onChangeHandler('foreign')}
                             />
+                            {errors['foreign'] && <span className={style.error}>{errors['foreign']}</span>}
                         </div>
                         <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
+                        {errorMessage &&  <span className={style.errorMessage}>{errorMessage}</span> }
                     </form>
                     <div className={style.formGroup + ' ' + style.search}>
                         <label htmlFor="search" />
@@ -167,7 +183,7 @@ function MainPage() {
                     <div className={style.row}>
                         <div>   
                             <div className={style.rowHeader}>
-                                <h1>Words</h1>
+                                <h1>Words / Count: {words.length}</h1>
                                 {words.length > 0 &&
                                     <div 
                                         className={style.fullScreen} 
@@ -181,12 +197,10 @@ function MainPage() {
                                         <div className={style.national}>{word.national}:</div>
                                         <div className={style.foreign}>{word.foreign}</div>
                                         <div className={style.options}>
-                                            {!word.isFavorite &&
                                             <div
-                                                className={style.favorite}
+                                                className={`${style.favorite} ${word.isFavorite ? style.activeFavorite : ''}`}
                                                 onClick={() => addToFavorite(word._id)}
                                             />
-                                            }
                                             <div
                                                 onClick={() => editItem(word)}
                                                 className={style.edit}
@@ -202,12 +216,10 @@ function MainPage() {
                                         <div className={style.national}>{word.national}:</div>
                                         <div className={style.foreign}>{word.foreign}</div>
                                         <div className={style.options}>
-                                            {!word.isFavorite &&
                                             <div
-                                                className={style.favorite}
+                                                className={`${style.favorite} ${word.isFavorite ? style.activeFavorite : ''}`}
                                                 onClick={() => addToFavorite(word._id)}
                                             />
-                                            }
                                             <div
                                                 onClick={() => editItem(word)}
                                                 className={style.edit}

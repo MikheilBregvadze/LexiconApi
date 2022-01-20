@@ -1,7 +1,9 @@
 .button {
+    height: fit-content;
     padding: 12px 25px;
     border: none;
     outline: none;
+    color: #000;
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Medium';

@@ -23,10 +23,6 @@
     border: none;
 }
 
-.items:last-child {
-    border-bottom: none;
-}
-
 .rowHeader {
     width: 596px;
     display: flex;
@@ -60,6 +56,10 @@
     border-bottom: 1px solid antiquewhite;
 }
 
+.items .item:last-child {
+    border-bottom: none;
+}
+
 .national {
     width: 240px;
     margin-left: 20px;
@@ -87,6 +87,10 @@
     margin-right: 10px;
     transition: all .2s ease-in-out;
     background: url('../../assets/images/icons/star.png');
+}
+
+.activeFavorite {
+    background: url('../../assets/images/icons/starHover.png');
 }
 
 .favorite:hover {
@@ -123,6 +127,17 @@
     justify-content: space-between;
 }
 
+.errorMessage,
+.error {
+    display: block;
+    color: red;
+    font-size: 14px;
+    padding-top: 2px;
+}
+
+.errorMessage {
+    padding: 10px;
+}
 
 @media only screen and (max-width: 1100px) {
     .row {

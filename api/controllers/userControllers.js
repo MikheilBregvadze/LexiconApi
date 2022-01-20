@@ -59,6 +59,19 @@ const addWord = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserId(req.headers.authorization));
     const words = user.words;
     const alreadyExist = words.find((r) => r.foreign.toLowerCase() === foreign.toLowerCase());
+    const errors = {};
+    if(national.length === 0) {
+        errors['national'] = 'Field is empty!';
+    }
+
+    if(foreign.length === 0) {
+        errors['foreign'] = 'Field is empty!';
+    }   
+
+    if(Object.entries(errors).length > 0) {
+        res.json({ status: 400, errors: errors });
+        throw new Error('Word already exist');
+    }
 
     if (alreadyExist) {
         res.json({ status: 400, errorMessage: 'Word already exist' });
@@ -130,14 +143,15 @@ const addWordToFavorites = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserId(req.headers.authorization));
     const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
     const alreadyExist = user.favoriteWords.find((r) => r._id.toString() === req.params.item_id.toString());
-    if (!alreadyExist) {
-        currentWord.isFavorite = true;
+    currentWord.isFavorite = !alreadyExist;
+    if(!alreadyExist)
         user.favoriteWords.push(currentWord);
-        await user.save();
-        res.status(201).json({ favoriteWords: user.favoriteWords });
-    } else {
-        res.status(404).json({ errorMessage: 'Word already exist' });
+    else {
+        const favoriteWords = user.favoriteWords.filter((r) => r._id.toString() !== req.params.item_id.toString());
+        user.favoriteWords = favoriteWords;
     }
+    await user.save();
+    res.status(201).json({ favoriteWords: user.favoriteWords, words: user.words });
 })
 
 const getFavoriteWords = asyncHandler(async (req, res) => {

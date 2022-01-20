@@ -16,7 +16,7 @@ function Favorites(props) {
     }
     return (
         <div>
-            <h1>Favorites</h1>
+            <h1>Favorites / Count: {favoriteWords.length}</h1>
             <div className={`${style.items} ${favoriteWords.length > 0 ? '' : style.empty}`}>
             {
                 favoriteWords.length > 0 ? favoriteWords.map((word, index) => (

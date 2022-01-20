@@ -99,7 +99,7 @@ function Registration({ modalIsOpen }) {
                         />
                         {error['confirm_password'] && <span className={style.error}>{error['confirm_password']}</span>}
                     </div>
-                    <Button title="Register" type="submit" clickHandler={() => console.log(1)} />
+                    <Button title="Register" type="submit" />
                 </form>
             </CustomModal>
         </>

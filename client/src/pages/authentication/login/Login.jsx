@@ -55,7 +55,7 @@ function Login() {
                 />
                 {error['password'] && <span className={style.error}>{error['password']}</span>}
             </div>
-            <Button title="Login" type="submit" clickHandler={() => console.log(1)} />
+            <Button title="Login" type="submit" />
         </form>
     )
 }

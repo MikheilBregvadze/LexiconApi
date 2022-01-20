@@ -38,6 +38,9 @@ body {
 }
 
 .ReactModal__Overlay  {
+    top: 0;
+    left: 0;
+    height: 100%;
     border: none !important;
     outline: none !important;
     backdrop-filter: blur(2px);

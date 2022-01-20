@@ -7,11 +7,7 @@
 }
 
 .formGroup {
-    margin-bottom: 20px;
-}
-
-.formGroup {
-    width: 80%;
+    width: 400px;
 }
 
 .formGroup input {
@@ -19,7 +15,11 @@
 }
 
 .form button {
-    width: 80%;
+    width: 400px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
 }
 
 .error {
@@ -27,4 +27,18 @@
     color: red;
     font-size: 13px;
     padding-top: 2px;
+}
+
+@media only screen and (max-width: 660px) {
+    .formGroup {
+        width: 80%;
+    }
+    
+    .formGroup input {
+        width: 100%;
+    }
+    
+    .form button {
+        width: 80%;
+    }
 }

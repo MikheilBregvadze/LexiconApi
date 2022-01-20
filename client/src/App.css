@@ -57,3 +57,7 @@ input:-webkit-autofill:active{
 input:-webkit-autofill{
     -webkit-text-fill-color: #fff !important;
 }
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}

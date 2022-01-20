@@ -151,7 +151,7 @@ function MainPage() {
                         <div className={style.formGroup}>
                             <label htmlFor="national" />
                             <Input
-                                placeholder="National Language"
+                                placeholder="Enter National Word"
                                 name="national"
                                 value={form.national}
                                 onChangeHandler={onChangeHandler('national')}
@@ -161,7 +161,7 @@ function MainPage() {
                         <div className={style.formGroup}>
                             <label htmlFor="foreign" />
                             <Input
-                                placeholder="Foreign Language"
+                                placeholder="Enter Foreign Word"
                                 name="foreign"
                                 value={form.foreign}
                                 onChangeHandler={onChangeHandler('foreign')}

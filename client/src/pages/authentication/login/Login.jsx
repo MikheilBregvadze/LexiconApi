@@ -10,9 +10,11 @@ function Login() {
         username: '',
         password: ''
     });
+    const [error, setError] = useState({});
     const { authenticate } = useContext(Auth);
     const onChangeHandler = input => event => {
-        setForm({...form, [input]: event.target.value})
+        setError({ ...error, [input]: null });
+        setForm({...form, [input]: event.target.value});
     }
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,10 +22,13 @@ function Login() {
             .then(res => {
                 if(res.data.token) {
                     authenticate(res.data);
+                } else {
+                    if(res.data.status === 400)
+                        setError(res.data.error)
                 }
             })
             .catch(error => {
-                console.log(error)
+                setError({ username: error.response.data.error })
             })
     }
     return (
@@ -37,6 +42,7 @@ function Login() {
                     value={form.username}
                     onChangeHandler={onChangeHandler('username')}
                 />
+                {error['username'] && <span className={style.error}>{error['username']}</span>}
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="password"></label>
@@ -47,6 +53,7 @@ function Login() {
                     value={form.password}
                     onChangeHandler={onChangeHandler('password')}
                 />
+                {error['password'] && <span className={style.error}>{error['password']}</span>}
             </div>
             <Button title="Login" type="submit" clickHandler={() => console.log(1)} />
         </form>

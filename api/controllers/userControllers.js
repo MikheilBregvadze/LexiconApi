@@ -6,6 +6,20 @@ const User = require('../models/userModel');
 const authUser = asyncHandler(async (req, res) => {
     const { username, password } = req.body;
 
+    const errors = {};
+    if(username.length === 0) {
+        errors['username'] = 'Field is empty!';
+    }
+
+    if(password.length === 0) {
+        errors['password'] = 'Field is empty!';
+    }   
+
+    if(Object.entries(errors).length > 0) {
+        res.json({ status: 400, error: errors });
+        throw new Error('Validation error!');
+    }
+
     const user = await User.findOne({ username });
 
     if (user && (await user.matchPassword(password))) {
@@ -15,7 +29,7 @@ const authUser = asyncHandler(async (req, res) => {
             token: generateToken(user._id),
         })
     }else {
-        res.status(401)
+        res.status(401).json({ error: 'Invalid email or password' })
         throw new Error('Invalid email or password')
     }
 })
@@ -23,9 +37,26 @@ const authUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
     const { username, password, confirm_password } = req.body;
 
+    const errors = {};
+    if(username.length === 0) {
+        errors['username'] = 'Field is empty!';
+    }
+
+    if(password.length === 0) {
+        errors['password'] = 'Field is empty!';
+    }   
+
+    if(confirm_password.length === 0) {
+        errors['confirm_password'] = 'Field is empty!';
+    }   
+
     if(password !== confirm_password) {
-        res.json({ status: 400, errorMessage: "Password don't match!" });
-        throw new Error('Password don"t match!');
+        errors['password'] = "Password don't match! !";
+    }
+
+    if(Object.entries(errors).length > 0) {
+        res.json({ status: 400, error: errors });
+        throw new Error('Validation error!');
     }
 
     const usernameExists = await User.findOne({ username });

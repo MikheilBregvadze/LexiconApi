@@ -9,3 +9,22 @@
 .formGroup {
     margin-bottom: 20px;
 }
+
+.formGroup {
+    width: 80%;
+}
+
+.formGroup input {
+    width: 100%;
+}
+
+.form button {
+    width: 80%;
+}
+
+.error {
+    display: block;
+    color: red;
+    font-size: 13px;
+    padding-top: 2px;
+}

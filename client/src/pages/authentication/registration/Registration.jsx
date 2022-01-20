@@ -8,8 +8,9 @@ import { ClientRegistration } from '../../../services/services'
 import { consoleLog } from '../../../services/common'
 import style from './Registration.module.css'
 
-function Registration({ modalIsOpen, closeModal }) {
+function Registration({ modalIsOpen }) {
     const [showModal, setShowModal] = useState(false);
+    const [error, setError] = useState({});
     const [form, setForm] = useState({
         username: '',
         password: '',
@@ -22,7 +23,8 @@ function Registration({ modalIsOpen, closeModal }) {
     }, [modalIsOpen])
     
     const onChangeHandler = input => event => {
-        setForm({...form, [input]: event.target.value})
+        setError({ ...error, [input]: null });
+        setForm({...form, [input]: event.target.value});
     }
 
     const handleSubmit = (event) => {
@@ -32,6 +34,9 @@ function Registration({ modalIsOpen, closeModal }) {
                 if(res.data.token) {
                     setShowModal(false);
                     authenticate(res.data);
+                } else {
+                    if(res.data.status === 400)
+                        setError(res.data.error)
                 }
             })
             .catch(error => {
@@ -39,7 +44,12 @@ function Registration({ modalIsOpen, closeModal }) {
             })
     }
     const closeModalHandler = () => {
-        // closeModal();
+        setError({});
+        setForm({
+            username: '',
+            password: '',
+            confirm_password: ''
+        })
         setShowModal(false);
     }
     return (
@@ -64,6 +74,7 @@ function Registration({ modalIsOpen, closeModal }) {
                             value={form.username}
                             onChangeHandler={onChangeHandler('username')}
                         />
+                        {error['username'] && <span className={style.error}>{error['username']}</span>}
                     </div>
                     <div className={style.formGroup}>
                         <label htmlFor="password"></label>
@@ -74,6 +85,7 @@ function Registration({ modalIsOpen, closeModal }) {
                             value={form.password}
                             onChangeHandler={onChangeHandler('password')}
                         />
+                        {error['password'] && <span className={style.error}>{error['password']}</span>}
                     </div>
                     
                     <div className={style.formGroup}>
@@ -85,6 +97,7 @@ function Registration({ modalIsOpen, closeModal }) {
                             value={form.confirm_password}
                             onChangeHandler={onChangeHandler('confirm_password')}
                         />
+                        {error['confirm_password'] && <span className={style.error}>{error['confirm_password']}</span>}
                     </div>
                     <Button title="Register" type="submit" clickHandler={() => console.log(1)} />
                 </form>

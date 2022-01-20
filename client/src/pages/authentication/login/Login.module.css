@@ -7,6 +7,12 @@
     margin-right: 20px;
 }
 
+.error {
+    display: block;
+    color: red;
+    font-size: 13px;
+    padding-top: 2px;
+}
 
 @media only screen and (max-width: 660px) {
     .form {

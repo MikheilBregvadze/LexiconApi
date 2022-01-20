@@ -3,6 +3,7 @@ import Login from '../../authentication/login/Login'
 import { Auth } from "../../../services/context/useAuthentication";
 
 import style from './Header.module.css'
+import Registration from '../../authentication/registration/Registration';
 
 function Header() {
     const { auth, clientInfo, logOut } = useContext(Auth);
@@ -15,7 +16,10 @@ function Header() {
                     <div className={style.exit} onClick={exitHandler}>Exit</div>
                 </div>
                 :
-                <Login />
+                <div className={style.auth}>
+                    <Login />
+                    <Registration />
+                </div>
             }
         </div>
     )

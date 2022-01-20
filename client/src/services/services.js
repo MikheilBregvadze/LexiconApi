@@ -41,6 +41,10 @@ export const ClientAuthorization = (data) => {
     return axios.post(GetBaseUrl() + '/Api/Client/Login', data);
 }
 
+export const ClientRegistration = (data) => {
+    return axios.post(GetBaseUrl() + '/Api/Client/Register', data);
+}
+
 export const ClientAddWord = (data) => {
     return AuthorizedPost('/Api/Client/AddWord', data);
 }

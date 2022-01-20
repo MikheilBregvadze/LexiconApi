@@ -16,3 +16,13 @@
     color: #7c6363;
     transition: all .2s ease-in-out;
 }
+
+.auth {
+    display: flex;
+}
+
+@media only screen and (max-width: 660px) {
+    .auth {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,36 @@
+.content {
+    width: 400px;
+    margin: auto;
+    margin-top: 40px;
+}
+.content .item:last-child {
+    border-bottom: 1px solid antiquewhite;
+}
+.item {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-family: "Regular";
+    justify-content: center;
+    border-bottom: transparent;
+    border: 1px solid antiquewhite;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge add Firefox */
+  .content {
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+  }
+@media only screen and (max-width: 660px) {
+    .content {
+        width: 90%;
+        max-height: calc(100vh - 80px);
+        margin-top: 60px;
+        overflow: auto;
+    }
+}

@@ -21,7 +21,12 @@ const authUser = asyncHandler(async (req, res) => {
 })
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, confirm_password } = req.body;
+
+    if(password !== confirm_password) {
+        res.json({ status: 400, errorMessage: "Password don't match!" });
+        throw new Error('Password don"t match!');
+    }
 
     const usernameExists = await User.findOne({ username });
     
@@ -39,6 +44,8 @@ const registerUser = asyncHandler(async (req, res) => {
 
     if(user) {
         res.json({
+            _id: user._id,
+            username: user.username,
             token: generateToken(user._id)
         })
     } else {
@@ -71,7 +78,7 @@ const addWord = asyncHandler(async (req, res) => {
 
 const getAllWords = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserId(req.headers.authorization));
-    if(user) {
+    if(user) {  
         res.status(201).json({ words: user.words });
     } else {
         res.status(404).json({ errorMessage: 'Word not exist' });
@@ -102,14 +109,18 @@ const editWord = asyncHandler(async (req, res) => {
 
     const user = await User.findById(getUserId(req.headers.authorization));
     const words = user.words;
+    const favoriteWords = user.favoriteWords;
     const currentWord = words.find((r) => r._id.toString() === req.params.item_id.toString());
+    const currentFavoriteWord = favoriteWords.find((r) => r._id.toString() === req.params.item_id.toString());
     
     if (currentWord) {
         currentWord.national = national;
         currentWord.foreign = foreign;
+        currentFavoriteWord.national = national;
+        currentFavoriteWord.foreign = foreign;
         // user.words = currentWord;
         await user.save();
-        res.status(201).json({ words: user.words });
+        res.status(201).json({ words: user.words, favoriteWords: user.favoriteWords });
     } else {
         res.status(404).json({ errorMessage: 'Word already exist' });
     }

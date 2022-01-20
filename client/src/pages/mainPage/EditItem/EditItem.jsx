@@ -26,7 +26,8 @@ function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
         e.preventDefault();
         UpdatedWord(form.id, form)
             .then(res => {
-                updateWords(res.data.words)
+                console.log(res.data);
+                updateWords(res.data.words, res.data.favoriteWords)
             })
             .catch(err => {
                 console.log(err)

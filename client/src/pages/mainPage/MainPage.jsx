@@ -9,11 +9,12 @@ import {
     AddFavorite,
     GetFavoriteWords
 } from '../../services/services'
-import Notifications from "./Notifications/Notifications";
+// import Notifications from "./Notifications/Notifications";
 import { Auth } from '../../services/context/useAuthentication'
 
 import style from './MainPage.module.css'
 import Favorites from './Favorites/Favorites'
+import ModalView from './ModalView/ModalView'
 
 function MainPage() {
     const [form, setForm] = useState({
@@ -25,7 +26,8 @@ function MainPage() {
     const [favoriteWords, setFavoriteWords] = useState([]);
     const [updateWord, setUpdateWord] = useState(0);
     const [searchedWords, setSearchedWords] = useState([]);
-    const [callNotification, setCallNotification] = useState(false);
+    // const [callNotification, setCallNotification] = useState(false);    
+    const [showModalView, setShowModalView] = useState(false);
     const { auth } = useContext(Auth);
 
     const onChangeHandler = (input) => (event) => {
@@ -43,7 +45,7 @@ function MainPage() {
     }
     
     const submitForm = (e) => {
-        setCallNotification(false);
+        // setCallNotification(false);
         e.preventDefault();
         ClientAddWord(form)
             .then(res => {
@@ -51,7 +53,7 @@ function MainPage() {
                     setWords(res.data.words);
                     setForm({ national: '', foreign: '' });
                     setTimeout(() => {
-                        setCallNotification(true);
+                        // setCallNotification(true);
                     }, 3000)
                 }
             })
@@ -74,7 +76,7 @@ function MainPage() {
     }
 
     const editItem = (item) => {
-        setUpdateWord(item)
+        setUpdateWord(item);
     }
 
     const addToFavorite = (id) => {
@@ -127,7 +129,7 @@ function MainPage() {
         setWords(newArr);
         setFavoriteWords(favoriteWords);
     }
-    console.log(123);
+    
     return (
         <>
             {auth && 
@@ -164,7 +166,15 @@ function MainPage() {
                     </div>
                     <div className={style.row}>
                         <div>   
-                            <h1>Words</h1>
+                            <div className={style.rowHeader}>
+                                <h1>Words</h1>
+                                {words.length > 0 &&
+                                    <div 
+                                        className={style.fullScreen} 
+                                        onClick={() => setShowModalView(true)}    
+                                    />
+                                }
+                            </div>
                             <div className={`${style.items} ${words.length > 0 ? '' : style.empty}`}>
                                 { searchedWords.length > 0 ? searchedWords.map((word, index) => (
                                     <div key={index} className={style.item}>
@@ -217,7 +227,19 @@ function MainPage() {
                     </div>
                 </div>
             }
-            <EditItem modalIsOpen={updateWord !== 0} item={updateWord} closeModal={() => setUpdateWord(0)} updateWords={(words) => {setWords(words); setUpdateWord(0)}} />
+            {words.length > 0 && 
+                <ModalView 
+                    words={words} 
+                    modalIsOpen={showModalView} 
+                    closeModal={() => setShowModalView(!showModalView)} 
+                />
+            }
+            <EditItem 
+                modalIsOpen={updateWord !== 0} 
+                item={updateWord} 
+                closeModal={() => setUpdateWord(0)} 
+                updateWords={(words, favoriteWords) => {setWords(words); setFavoriteWords(favoriteWords); setUpdateWord(0)}} 
+            />
             {/* <Notifications callNotification={callNotification} /> */}
         </>
     )

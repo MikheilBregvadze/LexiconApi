@@ -160,8 +160,10 @@ const editWord = asyncHandler(async (req, res) => {
     if (currentWord) {
         currentWord.national = national;
         currentWord.foreign = foreign;
-        currentFavoriteWord.national = national;
-        currentFavoriteWord.foreign = foreign;
+        if(currentFavoriteWord) {
+            currentFavoriteWord.national = national;
+            currentFavoriteWord.foreign = foreign;
+        }
         // user.words = currentWord;
         await user.save();
         res.status(201).json({ words: user.words, favoriteWords: user.favoriteWords });

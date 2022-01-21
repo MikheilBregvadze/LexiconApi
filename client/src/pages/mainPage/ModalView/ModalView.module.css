@@ -19,6 +19,29 @@
     border-bottom: transparent;
 }
 
+.foreign,
+.national {
+    width: 45%;
+}
+
+.wordWrap {
+    padding: 0 3px;
+}
+
+.isExchanged .wordWrap {
+    order: 1;
+}
+
+.isExchanged .national {
+    order: 2;
+    margin-left: 0;
+}
+
+.isExchanged .foreign {
+    order: 0;
+    margin-left: 20px;
+}
+
 .content::-webkit-scrollbar {
     display: none;
   }

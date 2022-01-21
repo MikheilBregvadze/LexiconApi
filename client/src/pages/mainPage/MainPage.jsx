@@ -15,6 +15,7 @@ import { Auth } from '../../services/context/useAuthentication'
 import style from './MainPage.module.css'
 import Favorites from './Favorites/Favorites'
 import ModalView from './ModalView/ModalView'
+import AddSentences from './AddSentences/AddSentences'
 
 function MainPage() {
     const [form, setForm] = useState({
@@ -28,8 +29,10 @@ function MainPage() {
     const [favoriteWords, setFavoriteWords] = useState([]);
     const [updateWord, setUpdateWord] = useState(0);
     const [searchedWords, setSearchedWords] = useState([]);
+    const [isExchanged, setIsExchanged] = useState(false);
     // const [callNotification, setCallNotification] = useState(false);    
     const [showModalView, setShowModalView] = useState(false);
+    const [showSentences, setShowSentences] = useState(true);
     const { auth } = useContext(Auth);
     
     const onChangeHandler = (input) => (event) => {
@@ -136,11 +139,16 @@ function MainPage() {
                 console.log(error);
             })
     }
+
     const updateFavorite = (id, favoriteWords) => {
         const newArr = words;
         newArr.map(item => item._id === id ? item.isFavorite = false : false);
         setWords(newArr);
         setFavoriteWords(favoriteWords);
+    }
+
+    const addInSentences = () => {
+
     }
     
     return (
@@ -184,19 +192,28 @@ function MainPage() {
                         <div>   
                             <div className={style.rowHeader}>
                                 <h1>Words / Count: {words.length}</h1>
-                                {words.length > 0 &&
+                                {words.length > 0 && <div className={style.wordsMenu}>
+                                    <div 
+                                        className={style.exchange} 
+                                        onClick={() => setIsExchanged(!isExchanged)}  
+                                    />
                                     <div 
                                         className={style.fullScreen} 
                                         onClick={() => setShowModalView(true)}    
                                     />
-                                }
+                                    
+                                </div>}
                             </div>
-                            <div className={`${style.items} ${words.length > 0 ? '' : style.empty}`}>
+                            <div className={`${style.items} ${words.length > 0 ? '' : style.empty} ${isExchanged ? style.isExchanged : ''}`}>
                                 { searchedWords.length > 0 ? searchedWords.map((word, index) => (
                                     <div key={index} className={style.item}>
                                         <div className={style.national}>{word.national}:</div>
                                         <div className={style.foreign}>{word.foreign}</div>
                                         <div className={style.options}>
+                                            <div
+                                                className={`${style.addInSentences}`}
+                                                onClick={() => addInSentences(word._id)}
+                                            />
                                             <div
                                                 className={`${style.favorite} ${word.isFavorite ? style.activeFavorite : ''}`}
                                                 onClick={() => addToFavorite(word._id)}
@@ -213,9 +230,13 @@ function MainPage() {
                                     </div>
                                 )) : words.length > 0 ? words.map((word, index) => (
                                     <div key={index} className={style.item}>
-                                        <div className={style.national}>{word.national}:</div>
+                                        <div className={style.national}>{word.national}</div>
                                         <div className={style.foreign}>{word.foreign}</div>
                                         <div className={style.options}>
+                                            <div
+                                                className={`${style.addInSentences}`}
+                                                onClick={() => addInSentences(word._id)}
+                                            />
                                             <div
                                                 className={`${style.favorite} ${word.isFavorite ? style.activeFavorite : ''}`}
                                                 onClick={() => addToFavorite(word._id)}
@@ -242,6 +263,7 @@ function MainPage() {
             {words.length > 0 && 
                 <ModalView 
                     words={words} 
+                    isExchanged={isExchanged}
                     modalIsOpen={showModalView} 
                     closeModal={() => setShowModalView(!showModalView)} 
                 />
@@ -251,6 +273,10 @@ function MainPage() {
                 item={updateWord} 
                 closeModal={() => setUpdateWord(0)} 
                 updateWords={(words, favoriteWords) => {setWords(words); setFavoriteWords(favoriteWords); setUpdateWord(0)}} 
+            />
+            <AddSentences 
+                modalIsOpen={showSentences} 
+                closeModal={() => setShowSentences(false)} 
             />
             {/* <Notifications callNotification={callNotification} /> */}
         </>

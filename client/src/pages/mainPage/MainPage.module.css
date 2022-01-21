@@ -16,6 +16,8 @@
     margin-top: 20px;
     border-radius: 5px;
     height: max-content;
+    display: flex;
+    flex-direction: column-reverse;
     border: 1px solid antiquewhite;
 }
 
@@ -48,7 +50,7 @@
 }
 
 .item {
-    width: 596px;
+    width: 595px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -56,7 +58,7 @@
     border-bottom: 1px solid antiquewhite;
 }
 
-.items .item:last-child {
+.items .item:first-child {
     border-bottom: none;
 }
 
@@ -70,14 +72,25 @@
     width: 240px;
 }
 
+.isExchanged .national {
+    order: 0;
+    margin-left: 0;
+}
+
+.isExchanged .foreign {
+    order: -1;
+    margin-left: 20px;
+}
+
 .search {
     margin-top: 20px;
 }
 
 .options {
-    width: 13%;
+    width: 110px;
     display: flex;
     justify-content: flex-end;
+    transform: translateX(-10px);
 }
 
 .favorite {
@@ -122,9 +135,22 @@
     background: url('../../assets/images/icons/editHover.png');
 }
 
+.addInSentences {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    background: url('../../assets/images/icons/plus.png');
+}
+
+.addInSentences:hover {
+    background: url('../../assets/images/icons/plusHover.png');
+}
+
 .row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .errorMessage,
@@ -137,6 +163,23 @@
 
 .errorMessage {
     padding: 10px;
+}
+
+.wordsMenu {
+    display: flex;
+}
+
+.exchange {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 10px;
+    background: url('../../assets/images/icons/exchange.png');
+}
+
+.exchange:hover {
+    background: url('../../assets/images/icons/exchangeHover.png');
 }
 
 @media only screen and (max-width: 1100px) {
@@ -170,8 +213,8 @@
     }
 
     .item .options {
-        width: 80px;
-        margin-right: 15px;
+        width: 110px;
+        margin-right: 0px
     }
 
     .item .national {

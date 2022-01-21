@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const { type } = require('express/lib/response');
 
 const userSchema = mongoose.Schema({
     username: {
@@ -10,7 +11,12 @@ const userSchema = mongoose.Schema({
         {
             isFavorite: { type: Boolean, required: true },
             national: { type: String, required: true },
-            foreign: { type: String, required: true }
+            foreign: { type: String, required: true },
+            inSentences: [
+                { 
+                    word: { type: String } 
+                }
+            ]
         }
     ],
     favoriteWords: [

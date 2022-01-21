@@ -147,8 +147,8 @@ function MainPage() {
         setFavoriteWords(favoriteWords);
     }
 
-    const addInSentences = () => {
-
+    const addInSentences = (id) => {
+        setShowSentences(true)
     }
     
     return (

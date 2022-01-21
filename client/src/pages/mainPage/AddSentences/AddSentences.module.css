@@ -1,0 +1,33 @@
+.popup {
+    width: 500px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup form {
+    width: 100%;
+}
+
+.messageTextField {
+    width: 100%;
+    resize: none;
+    min-height: 43px;
+    color: #fff;
+    padding-top: 11px;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-family: 'Regular';
+    background: transparent;
+    border: 1px solid antiquewhite;
+}
+
+.messageTextField::-webkit-scrollbar {
+    display: none;
+}
+
+.messageTextField::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 1);
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Input from '../../../components/customInput/Input';
+import TextareaAutosize from "react-textarea-autosize";
 import Button from '../../../components/customButton/Button';
 import CustomModal from '../../../components/customModal/customModal';
 
@@ -8,8 +8,7 @@ import CustomCloseButton from '../../../components/closeButton/CustomCloseButton
 
 function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
     const [sentences, setSentences] = useState('');
-    const onChangeHandler = (input) => (event) => { setSentences(event.target.value) };
-    
+
     const submitForm = (e) => {
         e.preventDefault();
     }
@@ -24,12 +23,14 @@ function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
                     <div className={style.form}>
                         <div className={style.formGroup}>
                             <label htmlFor="foreign" />
-                            <Input
-                                placeholder="National Language"
-                                name="national"
-                                value={sentences}
-                                onChangeHandler={onChangeHandler('sentences')}
-                            />
+                                <TextareaAutosize
+                                    rowsmax={3}
+                                    type="text"
+                                    placeholder="Enter Sentences"
+                                    value={sentences}
+                                    className={style.messageTextField}
+                                    onChange={(event) => setSentences(event.target.value)}
+                                />
                         </div>
                         <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
                     </div>

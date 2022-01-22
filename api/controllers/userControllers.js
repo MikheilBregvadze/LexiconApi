@@ -211,6 +211,24 @@ const deleteFavoriteWord = asyncHandler(async (req, res) => {
     }
 })
 
+const addSentences = asyncHandler(async (req, res) => {
+    const { sentences } = req.body;
+    const user = await User.findById(getUserId(req.headers.authorization));
+    const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
+    
+    
+    if(currentWord) {
+        if(sentences.length > 0) {
+            user.inSentences.push(sentences);
+            await user.save();
+            res.status(201).json({ words: user.words });
+        } else {
+            res.json({ status: 400, errorMessage: 'Field is empty!' });
+            throw new Error('Field is empty!');
+        }
+    }
+})
+
 
 module.exports = {
     authUser,

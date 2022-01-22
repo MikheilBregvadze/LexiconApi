@@ -31,3 +31,10 @@
 .messageTextField::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 1);
 }
+
+
+@media only screen and (max-width: 660px) {
+    .popup {
+        width: 90%;
+    }
+}

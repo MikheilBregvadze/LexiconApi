@@ -32,7 +32,7 @@ function MainPage() {
     const [isExchanged, setIsExchanged] = useState(false);
     // const [callNotification, setCallNotification] = useState(false);    
     const [showModalView, setShowModalView] = useState(false);
-    const [showSentences, setShowSentences] = useState(true);
+    const [showSentences, setShowSentences] = useState(false);
     const { auth } = useContext(Auth);
     
     const onChangeHandler = (input) => (event) => {

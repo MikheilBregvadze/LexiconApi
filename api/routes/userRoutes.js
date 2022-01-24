@@ -8,6 +8,8 @@ const {
     deleteWord,
     getAllWords,
     registerUser,
+    addSentences,
+    deleteSentences,
     getFavoriteWords,
     addWordToFavorites,
     deleteFavoriteWord
@@ -21,6 +23,8 @@ router.route('/GetAllWords').get(protect, getAllWords);
 router.route('/EditWord/:item_id').put(protect, editWord);
 router.route('/DeleteWord/:item_id').delete(protect, deleteWord);
 router.route('/GetFavoriteWords').get(protect, getFavoriteWords);
+router.route('/AddSentences/:item_id').post(protect, addSentences);
+router.route('/DeleteSentences/:item_id/:sentencesId').delete(protect, deleteSentences);
 router.route('/AddFavorite/:item_id').post(protect, addWordToFavorites);
 router.route('/DeleteFavoriteWord/:item_id').delete(protect, deleteFavoriteWord);
 

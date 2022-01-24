@@ -219,12 +219,36 @@ const addSentences = asyncHandler(async (req, res) => {
     
     if(currentWord) {
         if(sentences.length > 0) {
-            user.inSentences.push(sentences);
+            currentWord.inSentences.push({word: sentences});
             await user.save();
             res.status(201).json({ words: user.words });
         } else {
             res.json({ status: 400, errorMessage: 'Field is empty!' });
             throw new Error('Field is empty!');
+        }
+    }
+})
+
+const deleteSentences = asyncHandler(async (req, res) => {
+    const sentencesId  = req.params.sentencesId;
+    const user = await User.findById(getUserId(req.headers.authorization));
+    const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
+    
+    
+    if(currentWord) {
+        if(currentWord.inSentences.length > 0) {
+            const filteredSentences = currentWord.inSentences.filter((r) => r._id.toString() !== sentencesId.toString());
+            if(filteredSentences.length !== currentWord.inSentences.length) {
+                currentWord.inSentences = filteredSentences;
+                await user.save();
+                res.status(201).json({ words: user.words });
+            } else {
+                res.json({ status: 404, errorMessage: 'Sentences not found!' });
+                throw new Error('Sentences not found!');
+            }
+        } else {
+            res.json({ status: 400, errorMessage: 'Sentences is empty!' });
+            throw new Error('Sentences is empty!');
         }
     }
 })
@@ -237,6 +261,8 @@ module.exports = {
     deleteWord,
     getAllWords,
     registerUser,
+    addSentences,
+    deleteSentences,
     getFavoriteWords,
     addWordToFavorites,
     deleteFavoriteWord

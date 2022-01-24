@@ -32,6 +32,10 @@
     color: rgba(255, 255, 255, 1);
 }
 
+.messageTextField:focus-visible {
+    outline: none;
+}
+
 
 @media only screen and (max-width: 660px) {
     .popup {

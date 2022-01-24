@@ -1,4 +1,4 @@
-const whitelist = ['http://127.0.0.1:5000', 'https://lexicone.herokuapp.com']
+const whitelist = ['https://lexicone.herokuapp.com']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {

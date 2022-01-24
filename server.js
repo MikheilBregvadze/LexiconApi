@@ -13,7 +13,7 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 const userRoutes = require("./api/routes/userRoutes.js");
 

@@ -2,15 +2,28 @@ import React, { useState } from 'react';
 import TextareaAutosize from "react-textarea-autosize";
 import Button from '../../../components/customButton/Button';
 import CustomModal from '../../../components/customModal/customModal';
+import CustomCloseButton from '../../../components/closeButton/CustomCloseButton';
+import { AddSentence } from '../../../services/services';
 
 import style from './AddSentences.module.css';
-import CustomCloseButton from '../../../components/closeButton/CustomCloseButton';
+import { consoleLog } from '../../../services/common';
 
 function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
     const [sentences, setSentences] = useState('');
 
     const submitForm = (e) => {
         e.preventDefault();
+        AddSentence(itemId, {sentences: sentences})
+            .then(res => {
+                if(res.status === 201) {
+                    closeModal();
+                    setSentences('');
+                    updateWords(res.data.words);  
+                }
+            })
+            .catch(error => {
+                consoleLog(error);
+            })
     }
   return (
     <CustomModal

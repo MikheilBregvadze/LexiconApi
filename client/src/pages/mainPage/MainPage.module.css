@@ -12,7 +12,8 @@
 } 
 
 .items {
-    width: 596px;
+    width: 95%;
+    min-width: 596px;
     margin-top: 20px;
     border-radius: 5px;
     height: max-content;
@@ -50,9 +51,10 @@
 }
 
 .item {
-    width: 595px;
-    height: 50px;
+    width: 100%;
+    min-width: 595px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     font-family: "Regular";
     border-bottom: 1px solid antiquewhite;
@@ -62,14 +64,23 @@
     border-bottom: none;
 }
 
+.words {
+    width: calc(100% - 110px);
+    /* min-height: 50px; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 .national {
-    width: 240px;
+    width: 232px;
+    padding: 15px 0;
     margin-left: 20px;
     font-family: "GE_Regular";
 }
 
 .foreign {
-    width: 240px;
+    width: 232px;
 }
 
 .isExchanged .national {
@@ -180,6 +191,28 @@
 
 .exchange:hover {
     background: url('../../assets/images/icons/exchangeHover.png');
+}
+
+.sentences {
+    flex-basis: 100%;
+    padding-bottom: 15px;
+}
+
+.sentences li {
+    position: relative;
+    list-style: none;
+    padding-left: 40px;
+}
+
+.removeSentence {
+    position: absolute;
+    top: 2px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transform: scale(0.7) rotate(45deg);
+    background: url('../../assets/images/icons/plus.png');
 }
 
 @media only screen and (max-width: 1100px) {

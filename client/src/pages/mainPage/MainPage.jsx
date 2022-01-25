@@ -32,7 +32,7 @@ function MainPage() {
     const [isExchanged, setIsExchanged] = useState(false);
     // const [callNotification, setCallNotification] = useState(false);    
     const [showModalView, setShowModalView] = useState(false);
-    const [showSentences, setShowSentences] = useState(false);
+    const [showSentences, setShowSentences] = useState(null);
     const { auth } = useContext(Auth);
     
     const onChangeHandler = (input) => (event) => {
@@ -148,7 +148,11 @@ function MainPage() {
     }
 
     const addInSentences = (id) => {
-        setShowSentences(true)
+        setShowSentences(id)
+    }
+
+    const deleteSentence = (wordId, sentenceId) => {
+        console.log(wordId, sentenceId);
     }
     
     return (
@@ -207,7 +211,7 @@ function MainPage() {
                             <div className={`${style.items} ${words.length > 0 ? '' : style.empty} ${isExchanged ? style.isExchanged : ''}`}>
                                 { searchedWords.length > 0 ? searchedWords.map((word, index) => (
                                     <div key={index} className={style.item}>
-                                        <div className={style.national}>{word.national}:</div>
+                                        <div className={style.national}>{word.national}</div>
                                         <div className={style.foreign}>{word.foreign}</div>
                                         <div className={style.options}>
                                             <div
@@ -230,8 +234,26 @@ function MainPage() {
                                     </div>
                                 )) : words.length > 0 ? words.map((word, index) => (
                                     <div key={index} className={style.item}>
-                                        <div className={style.national}>{word.national}</div>
-                                        <div className={style.foreign}>{word.foreign}</div>
+                                        <div className={style.words}>
+                                            <div className={style.national}>{word.national}</div>
+                                            <div className={style.foreign}>{word.foreign}</div>
+                                            
+                                            {word.inSentences.length > 0 && 
+                                                <ul className={style.sentences}>
+                                                    {word.inSentences.map(sentence => (
+                                                        <li key={sentence._id}>
+                                                            <span 
+                                                                title='Remove sentence' 
+                                                                className={style.removeSentence}
+                                                                onClick={() => deleteSentence(word._id, sentence._id)}
+                                                            />
+                                                            {sentence.word}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            }
+                                        </div>
+
                                         <div className={style.options}>
                                             <div
                                                 className={`${style.addInSentences}`}
@@ -275,8 +297,10 @@ function MainPage() {
                 updateWords={(words, favoriteWords) => {setWords(words); setFavoriteWords(favoriteWords); setUpdateWord(0)}} 
             />
             <AddSentences 
-                modalIsOpen={showSentences} 
-                closeModal={() => setShowSentences(false)} 
+                modalIsOpen={showSentences ? true : false} 
+                itemId={showSentences}
+                closeModal={() => setShowSentences(null)} 
+                updateWords={(words => setWords(words))}
             />
             {/* <Notifications callNotification={callNotification} /> */}
         </>

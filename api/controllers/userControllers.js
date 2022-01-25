@@ -234,7 +234,6 @@ const deleteSentences = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserId(req.headers.authorization));
     const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
     
-    
     if(currentWord) {
         if(currentWord.inSentences.length > 0) {
             const filteredSentences = currentWord.inSentences.filter((r) => r._id.toString() !== sentencesId.toString());

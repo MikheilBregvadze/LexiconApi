@@ -1,5 +1,9 @@
+.container {
+    width: 54%;
+}
+
 .items {
-    width: 375px;
+    width: 100%;
     margin-top: 20px;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -42,9 +46,17 @@
     background: url('../../../assets/images/icons/trashHover.png');
 }
 
-
+@media only screen and (max-width: 1100px) {
+    .container {
+        width: 100%;
+    }
+}
 
 @media only screen and (max-width: 660px) {
+    .container {
+        width: 100%;
+    }
+
     .items {
         width: 100%;
     }

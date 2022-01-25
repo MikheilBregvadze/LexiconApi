@@ -76,3 +76,7 @@ export const DeleteFavoriteWordById = (id) => {
 export const AddSentence = (id, data) => {
     return AuthorizedPost('/Api/Client/AddSentences/' + id, data);
 }
+
+export const DeleteSentence = (wordId, sentenceId) => {
+    return AuthorizedDelete(`/Api/Client/DeleteSentences/${wordId}/${sentenceId}`);
+}

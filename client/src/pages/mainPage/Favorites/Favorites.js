@@ -15,7 +15,7 @@ function Favorites(props) {
             })
     }
     return (
-        <div>
+        <div className={style.container}>
             <h1>Favorites / Count: {favoriteWords.length}</h1>
             <div className={`${style.items} ${favoriteWords.length > 0 ? '' : style.empty}`}>
             {

@@ -11,6 +11,11 @@
     margin-right: 20px;
 } 
 
+.wordSection {
+    width: 100%;
+    max-width: 930px;
+}
+
 .items {
     width: 95%;
     min-width: 596px;
@@ -27,7 +32,7 @@
 }
 
 .rowHeader {
-    width: 596px;
+    width: 95%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -219,6 +224,17 @@
     .row {
         flex-direction: column;
     }
+    .wordSection {
+        max-width: 100%;
+    }
+    .rowHeader {
+        width: 100%;
+    }
+    .item,
+    .items {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @media only screen and (max-width: 660px) {
@@ -238,8 +254,8 @@
     .item,
     .items {
         width: 100%;
+        min-width: 100%;
     }
-
     
     .item {
         justify-content: space-between;
@@ -251,11 +267,11 @@
     }
 
     .item .national {
-        width: 30%;
+        width: calc(50% - 10px);
     }
 
     .item .foreign {
-        width: 30%;
+        width: calc(50% - 10px);
     }
     .rowHeader {
         width: 100%;

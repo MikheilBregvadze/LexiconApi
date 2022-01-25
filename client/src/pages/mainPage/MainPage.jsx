@@ -7,7 +7,8 @@ import {
     GetClientAllWords,
     DeleteWordById,
     AddFavorite,
-    GetFavoriteWords
+    GetFavoriteWords,
+    DeleteSentence
 } from '../../services/services'
 // import Notifications from "./Notifications/Notifications";
 import { Auth } from '../../services/context/useAuthentication'
@@ -152,7 +153,15 @@ function MainPage() {
     }
 
     const deleteSentence = (wordId, sentenceId) => {
-        console.log(wordId, sentenceId);
+        DeleteSentence(wordId, sentenceId)
+            .then(res => {
+                if(res.status === 201) {
+                    setWords(res.data.words);  
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     
     return (
@@ -193,7 +202,7 @@ function MainPage() {
                         />
                     </div>
                     <div className={style.row}>
-                        <div>   
+                        <div className={style.wordSection}>   
                             <div className={style.rowHeader}>
                                 <h1>Words / Count: {words.length}</h1>
                                 {words.length > 0 && <div className={style.wordsMenu}>

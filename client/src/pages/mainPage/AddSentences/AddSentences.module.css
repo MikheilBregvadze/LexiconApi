@@ -1,14 +1,28 @@
 .popup {
-    width: 500px;
-    height: 100vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     margin: auto;
+    width: 500px;
+    padding: 25px 0;
+    height: max-content;
+    border-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    border: 1px solid antiquewhite;
 }
 
 .popup form {
     width: 100%;
+}
+
+.popup form h3 {
+    text-align: center;
+    font-weight: normal;
+    padding-bottom: 10px;
 }
 
 .messageTextField {
@@ -36,6 +50,10 @@
     outline: none;
 }
 
+.formGroup {
+    width: 80%;
+    margin: auto;
+}
 
 @media only screen and (max-width: 660px) {
     .popup {

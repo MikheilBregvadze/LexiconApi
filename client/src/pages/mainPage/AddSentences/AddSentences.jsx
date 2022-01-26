@@ -33,13 +33,14 @@ function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
         <div className={style.popup}>
             <CustomCloseButton closeModal={closeModal} />
                 <form onSubmit={(e) => submitForm(e)}>
-                    <div className={style.form}>
-                        <div className={style.formGroup}>
+                    <h3>Add Sentence</h3>
+                    <div className={style.formGroup}>
+                        <div className={style.inputGroup}>
                             <label htmlFor="foreign" />
                                 <TextareaAutosize
                                     rowsmax={3}
                                     type="text"
-                                    placeholder="Enter Sentences"
+                                    placeholder="Type Here"
                                     value={sentences}
                                     className={style.messageTextField}
                                     onChange={(event) => setSentences(event.target.value)}

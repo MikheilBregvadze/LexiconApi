@@ -10,6 +10,7 @@
 
 .modal {
     border: none;
+    height: 100%;
     background: transparent;
     outline: none !important;
 }

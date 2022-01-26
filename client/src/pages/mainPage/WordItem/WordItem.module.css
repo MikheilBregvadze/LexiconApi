@@ -57,7 +57,7 @@
 }
 
 .activeFavorite {
-    background: url('../../../assets/images/icons/starHover.png');
+    background: url('../../../assets/images/icons/starHover.png') !important;
 }
 
 .favorite:hover {

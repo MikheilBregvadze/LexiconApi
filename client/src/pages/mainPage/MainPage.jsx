@@ -12,11 +12,11 @@ import {
 } from '../../services/services'
 // import Notifications from "./Notifications/Notifications";
 import { Auth } from '../../services/context/useAuthentication'
-
-import style from './MainPage.module.css'
 import Favorites from './Favorites/Favorites'
 import ModalView from './ModalView/ModalView'
 import AddSentences from './AddSentences/AddSentences'
+import  WordItem  from './WordItem/WordItem'
+import style from './MainPage.module.css'
 
 function MainPage() {
     const [form, setForm] = useState({
@@ -219,69 +219,27 @@ function MainPage() {
                             </div>
                             <div className={`${style.items} ${words.length > 0 ? '' : style.empty} ${isExchanged ? style.isExchanged : ''}`}>
                                 { searchedWords.length > 0 ? searchedWords.map((word, index) => (
-                                    <div key={index} className={style.item}>
-                                        <div className={style.national}>{word.national}</div>
-                                        <div className={style.foreign}>{word.foreign}</div>
-                                        <div className={style.options}>
-                                            <div
-                                                className={`${style.addInSentences}`}
-                                                onClick={() => addInSentences(word._id)}
-                                            />
-                                            <div
-                                                className={`${style.favorite} ${word.isFavorite ? style.activeFavorite : ''}`}
-                                                onClick={() => addToFavorite(word._id)}
-                                            />
-                                            <div
-                                                onClick={() => editItem(word)}
-                                                className={style.edit}
-                                            />
-                                            <div
-                                                className={style.remove}
-                                                onClick={(e) => deleteWord(word._id, e)}
-                                            />
-                                        </div>
-                                    </div>
+                                    <WordItem 
+                                        key={index}
+                                        word={word}
+                                        index={index}
+                                        editItem={editItem}
+                                        deleteWord={deleteWord}
+                                        addToFavorite={addToFavorite}
+                                        addInSentences={addInSentences}
+                                        deleteSentence={deleteSentence}
+                                    />
                                 )) : words.length > 0 ? words.map((word, index) => (
-                                    <div key={index} className={style.item}>
-                                        <div className={style.words}>
-                                            <div className={style.national}>{word.national}</div>
-                                            <div className={style.foreign}>{word.foreign}</div>
-                                            
-                                            {word.inSentences.length > 0 && 
-                                                <ul className={style.sentences}>
-                                                    {word.inSentences.map(sentence => (
-                                                        <li key={sentence._id}>
-                                                            <span 
-                                                                title='Remove sentence' 
-                                                                className={style.removeSentence}
-                                                                onClick={() => deleteSentence(word._id, sentence._id)}
-                                                            />
-                                                            {sentence.word}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            }
-                                        </div>
-
-                                        <div className={style.options}>
-                                            <div
-                                                className={`${style.addInSentences}`}
-                                                onClick={() => addInSentences(word._id)}
-                                            />
-                                            <div
-                                                className={`${style.favorite} ${word.isFavorite ? style.activeFavorite : ''}`}
-                                                onClick={() => addToFavorite(word._id)}
-                                            />
-                                            <div
-                                                onClick={() => editItem(word)}
-                                                className={style.edit}
-                                            />
-                                            <div
-                                                className={style.remove}
-                                                onClick={(e) => deleteWord(word._id, e)}
-                                            />
-                                        </div>
-                                    </div>
+                                    <WordItem 
+                                        key={index}
+                                        word={word}
+                                        index={index}
+                                        editItem={editItem}
+                                        deleteWord={deleteWord}
+                                        addToFavorite={addToFavorite}
+                                        addInSentences={addInSentences}
+                                        deleteSentence={deleteSentence}
+                                    />
                                 )) : 
                                     <div>No more words yet!</div> 
                                 }

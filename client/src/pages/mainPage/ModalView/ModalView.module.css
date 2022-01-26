@@ -54,7 +54,7 @@
 @media only screen and (max-width: 660px) {
     .content {
         width: 90%;
-        max-height: calc(100vh - 80px);
+        height: calc(100vh - 80px);
         margin-top: 60px;
         overflow: auto;
     }

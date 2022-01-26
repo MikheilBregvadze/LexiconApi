@@ -30,7 +30,8 @@
     flex-direction: column;
 }
 
-/*.popup button {*/
-/*    margin-top: 10px;*/
-/*    margin-left: 14px;*/
-/*}*/
+@media only screen and (max-width: 660px) { 
+    .popup {
+        width: 90%;
+    }
+}

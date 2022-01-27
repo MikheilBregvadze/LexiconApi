@@ -163,7 +163,10 @@ function MainPage() {
                                 }
                             </div>
                         </div>
-                        <Favorites favoriteWords={favoriteWords} updateFavorite={updateFavorite} />
+                        <Favorites 
+                            favoriteWords={favoriteWords} 
+                            updateFavorite={updateFavorite} 
+                        />
                     </div>
                 </div>
             }

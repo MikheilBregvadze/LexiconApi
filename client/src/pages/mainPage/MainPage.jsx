@@ -152,6 +152,7 @@ function MainPage() {
                                         key={index}
                                         word={word}
                                         index={index}
+                                        isExchanged={isExchanged}
                                         editItem={editItem}
                                         deleteWord={deleteWord}
                                         addToFavorite={addToFavorite}

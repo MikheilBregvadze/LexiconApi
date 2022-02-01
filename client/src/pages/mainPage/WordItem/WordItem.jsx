@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 
 import style from './WordItem.module.css'
 
-const WordItem = ({ word, index, deleteSentence, addInSentences, addToFavorite, editItem, deleteWord }) => {
+const WordItem = ({ word, index, deleteSentence, addInSentences, addToFavorite, editItem, deleteWord, isExchanged }) => {
     const [showOptions, setShowOptions] = useState(false);
 
     return (
-        <div key={index} className={style.item}>
+        <div key={index} className={`${style.item} ${isExchanged ? style.isExchanged : ''}`}>
             <div className={`${style.words} ${showOptions ? style.active : ''}`}>
                 <div className={style.national}>{word.national}</div>
                 <div className={`${style.foreign} ${showOptions ? style.hide : ''}`}>{word.foreign}</div>

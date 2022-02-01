@@ -35,6 +35,7 @@
 .isExchanged .national {
     order: 2;
     margin-left: 0;
+    font-family: "GE_Regular";
 }
 
 .isExchanged .foreign {

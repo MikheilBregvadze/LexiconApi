@@ -157,6 +157,21 @@ const editWord = asyncHandler(async (req, res) => {
     const currentWord = words.find((r) => r._id.toString() === req.params.item_id.toString());
     const currentFavoriteWord = favoriteWords.find((r) => r._id.toString() === req.params.item_id.toString());
     
+    const errors = {};
+    if(national.length === 0) {
+        errors['national'] = 'Field is empty!';
+    }
+
+    if(foreign.length === 0) {
+        errors['foreign'] = 'Field is empty!';
+    }   
+
+    if(Object.entries(errors).length > 0) {
+        res.json({ status: 400, errors: errors });
+        throw new Error('Word already exist');
+    }
+
+
     if (currentWord) {
         currentWord.national = national;
         currentWord.foreign = foreign;
@@ -215,7 +230,16 @@ const addSentences = asyncHandler(async (req, res) => {
     const { sentences } = req.body;
     const user = await User.findById(getUserId(req.headers.authorization));
     const currentWord = user.words.find((r) => r._id.toString() === req.params.item_id.toString());
-    
+
+    const errors = {};
+    if(sentences.length === 0) {
+        errors['national'] = 'Field is empty!';
+    } 
+
+    if(Object.entries(errors).length > 0) {
+        res.json({ status: 400, errors: errors });
+        throw new Error('Word already exist');
+    }
     
     if(currentWord) {
         if(sentences.length > 0) {

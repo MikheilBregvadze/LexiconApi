@@ -101,6 +101,35 @@
     background: url('../../../assets/images/icons/plusHover.png');
 }
 
+
+.sentences {
+    flex-basis: 95%;
+    padding-bottom: 15px;
+    transition: all .2s;
+}
+
+.sentences.hide {
+    opacity: 0;
+}
+
+.sentences li {
+    position: relative;
+    list-style: none;
+    padding-left: 40px;
+    word-break: break-all;
+}
+
+.removeSentence {
+    position: absolute;
+    top: 2px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transform: scale(0.7) rotate(45deg);
+    background: url('../../../assets/images/icons/plus.png');
+}
+
 @media only screen and (max-width: 1100px) {
     .row {
         flex-direction: column;

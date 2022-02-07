@@ -98,29 +98,6 @@
     background: url('../../assets/images/icons/exchangeHover.png');
 }
 
-.sentences {
-    flex-basis: 95%;
-    padding-bottom: 15px;
-}
-
-.sentences li {
-    position: relative;
-    list-style: none;
-    padding-left: 40px;
-    word-break: break-all;
-}
-
-.removeSentence {
-    position: absolute;
-    top: 2px;
-    left: 20px;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    transform: scale(0.7) rotate(45deg);
-    background: url('../../assets/images/icons/plus.png');
-}
-
 .arrow {
     display: none;
 }

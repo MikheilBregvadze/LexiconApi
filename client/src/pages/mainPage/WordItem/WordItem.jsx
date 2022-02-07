@@ -12,7 +12,7 @@ const WordItem = ({ word, index, deleteSentence, addInSentences, addToFavorite, 
                 <div className={`${style.foreign} ${showOptions ? style.hide : ''}`}>{word.foreign}</div>
                 
                 {word.inSentences.length > 0 && 
-                    <ul className={style.sentences}>
+                    <ul className={`${style.sentences} ${showOptions ? style.hide : ''}`}>
                         {word.inSentences.map(sentence => (
                             <li key={sentence._id}>
                                 <span 

@@ -44,7 +44,7 @@ body {
     height: 100%;
     border: none !important;
     outline: none !important;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(10px);
     background: #000000bf !important;
 }
 

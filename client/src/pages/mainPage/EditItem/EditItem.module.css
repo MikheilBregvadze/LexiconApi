@@ -6,7 +6,8 @@
     bottom: 0;
     margin: auto;
     width: 400px;
-    height: 225px;
+    height: max-content;
+    padding-bottom: 15px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -28,6 +29,18 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.errorMessage,
+.error {
+    display: block;
+    color: red;
+    font-size: 14px;
+    padding-top: 2px;
+}
+
+.errorMessage {
+    padding: 10px;
 }
 
 @media only screen and (max-width: 660px) { 

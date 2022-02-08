@@ -13,21 +13,26 @@ function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
         foreign: item.foreign,
         id: item._id
     })
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         setForm({ national: item.national, foreign: item.foreign, id: item._id })
     }, [item])
-
+    console.log(errors);
     const onChangeHandler = (input) => (event) => {
         setForm({ ...form, [input]: event.target.value });
+        setErrors({...errors, [input]: null });
     }
 
     const submitForm = (e) => {
         e.preventDefault();
         UpdatedWord(form.id, form)
             .then(res => {
-                console.log(res.data);
-                updateWords(res.data.words, res.data.favoriteWords)
+                if(res.status === 201) {
+                    updateWords(res.data.words, res.data.favoriteWords)
+                } else if(res.data.status === 400) {
+                    setErrors(res.data.errors);
+                }
             })
             .catch(err => {
                 console.log(err)
@@ -52,6 +57,7 @@ function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
                                 value={form.national}
                                 onChangeHandler={onChangeHandler('national')}
                             />
+                            {errors['national'] && <span className={style.error}>{errors['national']}</span>}
                         </div>
                         <div className={style.formGroup}>
                             <label htmlFor="foreign" />
@@ -61,6 +67,7 @@ function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
                                 value={form.foreign}
                                 onChangeHandler={onChangeHandler('foreign')}
                             />
+                            {errors['foreign'] && <span className={style.error}>{errors['foreign']}</span>}
                         </div>
                         <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
                     </div>

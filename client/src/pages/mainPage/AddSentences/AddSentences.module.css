@@ -55,6 +55,18 @@
     margin: auto;
 }
 
+.errorMessage,
+.error {
+    display: block;
+    color: red;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.errorMessage {
+    padding: 10px;
+}
+
 @media only screen and (max-width: 660px) {
     .popup {
         width: 90%;

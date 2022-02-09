@@ -10,6 +10,7 @@ import { consoleLog } from '../../../services/common';
 
 function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
     const [sentences, setSentences] = useState('');
+    const [errors, setErrors] = useState({});
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -19,39 +20,48 @@ function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
                     closeModal();
                     setSentences('');
                     updateWords(res.data.words);  
+                } else if(res.data.status === 400) {
+                    setErrors(res.data.errors);
                 }
             })
             .catch(error => {
                 consoleLog(error);
             })
+    }   
+    
+    const onChangeHandler = (input) => (event) => {
+        setSentences(event.target.value)
+        setErrors({...errors, [input]: null });
     }
-  return (
-    <CustomModal
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-    >
-        <div className={style.popup}>
-            <CustomCloseButton closeModal={closeModal} />
-                <form onSubmit={(e) => submitForm(e)}>
-                    <h3>Add Sentence</h3>
-                    <div className={style.formGroup}>
-                        <div className={style.inputGroup}>
-                            <label htmlFor="foreign" />
-                                <TextareaAutosize
-                                    rowsmax={3}
-                                    type="text"
-                                    placeholder="Type Here"
-                                    value={sentences}
-                                    className={style.messageTextField}
-                                    onChange={(event) => setSentences(event.target.value)}
-                                />
+
+    return (
+        <CustomModal
+            modalIsOpen={modalIsOpen}
+            closeModal={closeModal}
+        >
+            <div className={style.popup}>
+                <CustomCloseButton closeModal={closeModal} />
+                    <form onSubmit={(e) => submitForm(e)}>
+                        <h3>Add Sentence</h3>
+                        <div className={style.formGroup}>
+                            <div className={style.inputGroup}>
+                                <label htmlFor="foreign" />
+                                    <TextareaAutosize
+                                        rowsmax={3}
+                                        type="text"
+                                        placeholder="Type Here"
+                                        value={sentences}
+                                        className={style.messageTextField}
+                                        onChange={onChangeHandler('foreign')}
+                                    />
+                                {errors['foreign'] && <span className={style.error}>{errors['foreign']}</span>}
+                            </div>
+                            <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
                         </div>
-                        <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
-                    </div>
-                </form>
-        </div>
-    </CustomModal>
-  )
+                    </form>
+            </div>
+        </CustomModal>
+    )
 }
 
 export default AddSentences;

@@ -18,7 +18,7 @@ function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
     useEffect(() => {
         setForm({ national: item.national, foreign: item.foreign, id: item._id })
     }, [item])
-    console.log(errors);
+    
     const onChangeHandler = (input) => (event) => {
         setForm({ ...form, [input]: event.target.value });
         setErrors({...errors, [input]: null });

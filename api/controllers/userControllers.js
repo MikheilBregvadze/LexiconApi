@@ -233,7 +233,7 @@ const addSentences = asyncHandler(async (req, res) => {
 
     const errors = {};
     if(sentences.length === 0) {
-        errors['national'] = 'Field is empty!';
+        errors['foreign'] = 'Field is empty!';
     } 
 
     if(Object.entries(errors).length > 0) {

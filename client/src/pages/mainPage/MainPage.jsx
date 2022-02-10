@@ -16,6 +16,7 @@ import AddWord from './AddWord/AddWord'
 
 import style from './MainPage.module.css'
 import Search from './Search/Search'
+import { Loader } from '../../components/loader/Loader'
 
 function MainPage() {
     const [words, setWords] = useState([]);
@@ -25,11 +26,14 @@ function MainPage() {
     const [isExchanged, setIsExchanged] = useState(false); 
     const [showModalView, setShowModalView] = useState(false);
     const [showSentences, setShowSentences] = useState(null);
+    const [showLoader, setShowLoader] = useState(false);
     const { auth } = useContext(Auth);
     
     const deleteWord = (id) => {
+        setShowLoader(true);
         DeleteWordById(id)
             .then(res => {
+                setShowLoader(false);
                 if(res.status === 201) {
                     getFavorites();
                     setWords(res.data.words);
@@ -45,8 +49,10 @@ function MainPage() {
     }
 
     const addToFavorite = (id) => {
+        setShowLoader(true);
         AddFavorite(id)
             .then(res => {
+                setShowLoader(false);
                 if(res.status === 201) {
                     setWords(res.data.words);
                     setFavoriteWords(res.data.favoriteWords);
@@ -92,6 +98,7 @@ function MainPage() {
         newArr.map(item => item._id === id ? item.isFavorite = false : false);
         setWords(newArr);
         setFavoriteWords(favoriteWords);
+        setShowLoader(false);
     }
 
     const addInSentences = (id) => {
@@ -99,8 +106,10 @@ function MainPage() {
     }
 
     const deleteSentence = (wordId, sentenceId) => {
+        setShowLoader(true);
         DeleteSentence(wordId, sentenceId)
             .then(res => {
+                setShowLoader(false);
                 if(res.status === 201) {
                     setWords(res.data.words);  
                 }
@@ -114,7 +123,11 @@ function MainPage() {
         <>
             {auth && 
                 <div className={style.main}>
-                    <AddWord setWords={words => setWords(words)} />
+                    {showLoader && <Loader />}
+                    <AddWord 
+                        setWords={words => setWords(words)} 
+                        toggleLoader={() => setShowLoader(!showLoader)}     
+                    />
                     <Search 
                         words={words}
                         setSearchedWords={words => setSearchedWords(words)}
@@ -167,6 +180,7 @@ function MainPage() {
                         <Favorites 
                             favoriteWords={favoriteWords} 
                             updateFavorite={updateFavorite} 
+                            toggleLoader={() => setShowLoader(!showLoader)} 
                         />
                     </div>
                 </div>
@@ -183,9 +197,11 @@ function MainPage() {
                 modalIsOpen={updateWord !== 0} 
                 item={updateWord} 
                 closeModal={() => setUpdateWord(0)} 
+                toggleLoader={() => setShowLoader(!showLoader)} 
                 updateWords={(words, favoriteWords) => {setWords(words); setFavoriteWords(favoriteWords); setUpdateWord(0)}} 
             />
             <AddSentences 
+                toggleLoader={() => setShowLoader(!showLoader)} 
                 modalIsOpen={showSentences ? true : false} 
                 itemId={showSentences}
                 closeModal={() => setShowSentences(null)} 

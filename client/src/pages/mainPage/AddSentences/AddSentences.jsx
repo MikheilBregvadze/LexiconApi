@@ -8,7 +8,7 @@ import { AddSentence } from '../../../services/services';
 import style from './AddSentences.module.css';
 import { consoleLog } from '../../../services/common';
 
-function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
+function AddSentences({ modalIsOpen, closeModal, itemId, updateWords, toggleLoader }) {
     const [sentences, setSentences] = useState('');
     const [errors, setErrors] = useState({});
 
@@ -16,6 +16,7 @@ function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
         e.preventDefault();
         AddSentence(itemId, {sentences: sentences})
             .then(res => {
+                toggleLoader();
                 if(res.status === 201) {
                     closeModal();
                     setSentences('');
@@ -56,7 +57,7 @@ function AddSentences({ modalIsOpen, closeModal, itemId, updateWords }) {
                                     />
                                 {errors['foreign'] && <span className={style.error}>{errors['foreign']}</span>}
                             </div>
-                            <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
+                            <Button title="Save" type="submit" clickHandler={() => toggleLoader()} />
                         </div>
                     </form>
             </div>

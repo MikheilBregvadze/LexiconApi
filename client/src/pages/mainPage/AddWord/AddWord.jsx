@@ -5,7 +5,7 @@ import { ClientAddWord } from '../../../services/services';
 
 import style from './AddWord.module.css';
 
-const AddWord = ({ setWords }) => {
+const AddWord = ({ setWords, toggleLoader }) => {
     const [form, setForm] = useState({
         national: '',
         foreign: ''
@@ -31,6 +31,7 @@ const AddWord = ({ setWords }) => {
                         setErrors(res.data.errors);
                     }
                 }
+                toggleLoader();
             })
             .catch(error => {
                 console.log(error);
@@ -64,7 +65,7 @@ const AddWord = ({ setWords }) => {
                 />
                 {errors['foreign'] && <span className={style.error}>{errors['foreign']}</span>}
             </div>
-            <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
+            <Button title="Save" type="submit" clickHandler={() => toggleLoader()} />
             {errorMessage &&  <span className={style.errorMessage}>{errorMessage}</span> }
         </form>
     );

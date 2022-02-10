@@ -26,7 +26,7 @@ function Favorites(props) {
                         <div className={style.options}>
                             <div
                                 className={style.remove}
-                                onClick={(e) => deleteFavoriteWord(word._id, e)}
+                                onClick={(e) => {deleteFavoriteWord(word._id, e); props.toggleLoader()}}
                             />
                         </div>
                     </div>

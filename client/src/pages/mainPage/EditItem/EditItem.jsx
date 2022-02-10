@@ -7,7 +7,7 @@ import { UpdatedWord } from "../../../services/services";
 import style from './EditItem.module.css'
 import CustomCloseButton from "../../../components/closeButton/CustomCloseButton";
 
-function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
+function EditItem({ modalIsOpen, closeModal, item, updateWords, toggleLoader }) {
     const [form, setForm] = useState({
         national: item.national,
         foreign: item.foreign,
@@ -33,6 +33,7 @@ function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
                 } else if(res.data.status === 400) {
                     setErrors(res.data.errors);
                 }
+                toggleLoader();
             })
             .catch(err => {
                 console.log(err)
@@ -69,7 +70,7 @@ function EditItem({ modalIsOpen, closeModal, item, updateWords }) {
                             />
                             {errors['foreign'] && <span className={style.error}>{errors['foreign']}</span>}
                         </div>
-                        <Button title="Save" type="submit" clickHandler={() => console.log(1)} />
+                        <Button title="Save" type="submit" clickHandler={() => toggleLoader()} />
                     </div>
                 </form>
             </div>

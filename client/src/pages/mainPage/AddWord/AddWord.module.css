@@ -1,6 +1,6 @@
 .errorMessage,
 .error {
-    position: absolute;
+    /* position: absolute; */
     display: block;
     color: red;
     font-size: 14px;

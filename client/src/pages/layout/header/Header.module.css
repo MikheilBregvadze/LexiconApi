@@ -1,6 +1,7 @@
 .header {
     width: 90%;
-    margin: 20px auto;
+    margin: auto;
+    padding: 20px 0;
 }
 
 .navigation {
@@ -18,7 +19,16 @@
 }
 
 .auth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
+    flex-direction: column;
+    width: 240px;
+    margin: auto;
+    height: 100%;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 660px) {

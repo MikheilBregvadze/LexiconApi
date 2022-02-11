@@ -1,5 +1,6 @@
 .main {
     width: 90%;
+    height: 100%;
     margin: 0 auto;
 }
 
@@ -21,12 +22,23 @@
     min-width: 596px;
     margin-top: 20px;
     border-radius: 5px;
-    height: max-content;
+    overflow: auto;
+    height: calc(100% - 80px);
     display: flex;
     flex-direction: column-reverse;
     border: 1px solid antiquewhite;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.items::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.items {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 .items.empty {
     border: none;
 }
@@ -67,6 +79,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    height: calc(100% - 90px);
 }
 
 .errorMessage,

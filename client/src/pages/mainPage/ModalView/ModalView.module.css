@@ -2,10 +2,16 @@
     width: 400px;
     margin: auto;
     margin-top: 40px;
+    border-top: 1px solid var(--main-color);
+    border-bottom: 1px solid var(--main-color);
 }
 
 .content .item:last-child {
-    border-bottom: 1px solid antiquewhite;
+    border-bottom: none;
+}
+
+.item:first-child {
+    border-top: none;
 }
 
 .item {
@@ -15,7 +21,7 @@
     align-items: center;
     font-family: "Regular";
     justify-content: center;
-    border: 1px solid antiquewhite;
+    border: 1px solid var(--main-color);
     border-bottom: transparent;
 }
 

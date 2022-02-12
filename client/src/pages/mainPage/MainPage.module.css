@@ -25,8 +25,8 @@
     overflow: auto;
     max-height: calc(100% - 80px);
     display: flex;
-    flex-direction: column-reverse;
-    border: 1px solid antiquewhite;
+    flex-direction: column;
+    border: 1px solid var(--main-color);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -142,7 +142,7 @@
 
     .main form div {
         margin-right: 0 ;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .main form div input {

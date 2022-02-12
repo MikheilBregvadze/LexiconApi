@@ -7,10 +7,10 @@
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Medium';
-    background: antiquewhite;
+    background: var(--main-color);
     transition: all .2s ease-in-out;
 }
 
 .button:hover {
-    background: rgb(227, 211, 190);
+    background: var(--main-color-hover);
 }

@@ -23,6 +23,11 @@
     src: url("./assets/fonts/GE_Regular.ttf");
 }
 
+:root {
+    --main-color: antiquewhite;
+    --main-color-hover: rgb(227, 211, 190);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -38,11 +43,11 @@ body {
     top: 0;
     left: 0;
     color: #fff;
-    -webkit-user-select: none;
+    overflow: hidden;
     user-select: none;
     background: #282525;
     font-family: 'Medium';
-    overflow: hidden;
+    -webkit-user-select: none;
 }
 
 #root {
@@ -67,22 +72,17 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-transition-delay: 9999s;
     transition-delay: 9999s;
+    -webkit-transition-delay: 9999s;
 }
-
-/* input:-webkit-autofill{
-    -webkit-text-fill-color: #fff !important;
-} */
 
 .ReactModal__Body--open {
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
 }
-
 
 @media only screen and (max-width: 660px) {
     .section {

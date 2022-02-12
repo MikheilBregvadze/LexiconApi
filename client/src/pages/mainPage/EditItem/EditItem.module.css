@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid antiquewhite;
+    border: 1px solid var(--main-color);
 }
 
 .popup h3 {

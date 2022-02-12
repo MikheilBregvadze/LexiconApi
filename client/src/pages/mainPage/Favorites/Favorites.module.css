@@ -9,7 +9,7 @@
     margin-bottom: 20px;
     overflow: auto;
     max-height: calc(100% - 80px);
-    border: 1px solid antiquewhite;
+    border: 1px solid var(--main-color);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     font-family: "Regular";
-    border-bottom: 1px solid antiquewhite;
+    border-bottom: 1px solid var(--main-color);
 }
 
 .item:last-child {

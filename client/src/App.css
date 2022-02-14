@@ -33,12 +33,12 @@
 
 body {
     position: relative;
-    color: #fff;
-    user-select: none;
-    background: #282525;
-    font-family: 'Medium';
-    overflow: hidden;
     height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    user-select: none;
+    font-family: 'Medium';
+    background: #282525;
 }
 
 #root {
@@ -77,6 +77,10 @@ input:-webkit-autofill:active {
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+.icon-xl {
+    font-size: 30px;
 }
 
 

@@ -29,7 +29,14 @@ function MainPage() {
     const [showSentences, setShowSentences] = useState(null);
     const [showLoader, setShowLoader] = useState(false);
     const { auth } = useContext(Auth);
-    
+
+
+    // useEffect(() => {
+    //     const doc = document.documentElement
+    //     doc.style.setProperty('--main-color', 'red');
+    // })
+
+
     const deleteWord = (id) => {
         setShowLoader(true);
         DeleteWordById(id)

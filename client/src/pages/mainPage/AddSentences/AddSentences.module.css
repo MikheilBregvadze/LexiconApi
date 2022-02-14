@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 1px solid antiquewhite;
+    border: 1px solid var(--main-color);
 }
 
 .popup form {
@@ -35,7 +35,7 @@
     border-radius: 5px;
     font-family: 'Regular';
     background: transparent;
-    border: 1px solid antiquewhite;
+    border: 1px solid var(--main-color);
 }
 
 .messageTextField::-webkit-scrollbar {

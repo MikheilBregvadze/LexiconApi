@@ -6,7 +6,7 @@
     padding-left: 10px;
     font-family: 'Regular';
     background: transparent;
-    border: 1px solid antiquewhite;
+    border: 1px solid var(--main-color);
 }
 
 .input:focus {

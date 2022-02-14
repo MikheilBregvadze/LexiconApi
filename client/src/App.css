@@ -26,6 +26,9 @@
 :root {
     --main-color: antiquewhite;
     --main-color-hover: rgb(227, 211, 190);
+
+    --main-icon-color: antiquewhite;
+    --main-icon-color-hover: rgb(227, 211, 190);
 }
 
 * {
@@ -85,8 +88,13 @@ input:-webkit-autofill:active {
 
 .icon-xl {
     font-size: 30px;
+    transition: .2s;
+    color: var(--main-icon-color);
 }
 
+.icon-xl:hover {
+    color: var(--main-icon-color-hover);
+}
 
 @media only screen and (max-width: 660px) {
     .section {

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-// import {useHistory} from 'react-router-dom';
 import { getItemFromLocalStorage, setItemToLocalStorage } from "../common";
-// import { GetClientInfo } from "../services";
 
 export const Auth = React.createContext({});
 

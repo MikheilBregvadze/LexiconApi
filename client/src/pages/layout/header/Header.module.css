@@ -9,12 +9,18 @@
     justify-content: space-between;
 }
 
+.menu,
 .exit {
     cursor: pointer;
 }
 
+.menu:hover {
+    color: var(--main-color-hover);
+    transition: all .2s ease-in-out;
+}
+
 .exit:hover {
-    color: #7c6363;
+    color: var(--main-color-hover);
     transition: all .2s ease-in-out;
 }
 
@@ -29,6 +35,27 @@
     margin: auto;
     height: 100%;
     justify-content: center;
+}
+
+.cog {
+    cursor: pointer;
+}
+
+.setting {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    height: 0;
+    opacity: 0;
+    transition: all .2s linear;
+}
+
+
+.dropdown.active {
+    opacity: 1;
+    height: 50px;
 }
 
 @media only screen and (max-width: 660px) {

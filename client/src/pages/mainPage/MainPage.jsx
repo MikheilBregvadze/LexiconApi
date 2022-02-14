@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
 import EditItem from './EditItem/EditItem'
-import FontAwesome from "react-fontawesome"
 import {
     GetClientAllWords,
     DeleteWordById,
@@ -139,11 +138,6 @@ function MainPage() {
                     <Search 
                         words={words}
                         setSearchedWords={words => setSearchedWords(words)}
-                    />
-                    <FontAwesome
-                        className="icon-xl"
-                        name="cog"
-                        size="2x"
                     />
                     <div className={style.row}>
                         <div className={style.wordSection}>   

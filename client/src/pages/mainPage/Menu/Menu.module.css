@@ -1,0 +1,16 @@
+.menu {
+    position: absolute;
+    width: 350px;
+    height: 100vh;
+    top: 0;
+    opacity: 0;
+    right: -350px;
+    backdrop-filter: blur(5px);
+    background: #000000bf !important;
+    transition: all .3s linear;
+}
+
+.menu.active {
+    right: 0;
+    opacity: 1;
+}

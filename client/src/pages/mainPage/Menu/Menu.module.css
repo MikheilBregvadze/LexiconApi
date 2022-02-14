@@ -10,7 +10,26 @@
     transition: all .3s linear;
 }
 
+.meneItems {
+    padding-top: 50px;
+}
+
 .menu.active {
     right: 0;
     opacity: 1;
+}
+
+.group {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+@media only screen and (max-width: 660px) {
+    .menu {
+        width: 240px;
+    }
 }

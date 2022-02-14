@@ -24,6 +24,8 @@
 }
 
 :root {
+    --body-color: #282525;
+
     --main-color: antiquewhite;
     --main-color-hover: rgb(227, 211, 190);
 
@@ -50,6 +52,7 @@ body {
     user-select: none;
     font-family: 'Medium';
     -webkit-user-select: none;
+    background: var(--body-color);
 }
 
 #root {

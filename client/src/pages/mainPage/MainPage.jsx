@@ -8,11 +8,13 @@ import {
     DeleteSentence
 } from '../../services/services'
 import { Auth } from '../../services/context/useAuthentication'
+import { Theme } from '../../services/context/themeContext'
 import Favorites from './Favorites/Favorites'
 import ModalView from './ModalView/ModalView'
 import AddSentences from './AddSentences/AddSentences'
 import  WordItem  from './WordItem/WordItem'
 import AddWord from './AddWord/AddWord'
+import Landing from '../landing/Landing'
 
 import style from './MainPage.module.css'
 import Search from './Search/Search'
@@ -28,6 +30,7 @@ function MainPage() {
     const [showSentences, setShowSentences] = useState(null);
     const [showLoader, setShowLoader] = useState(false);
     const { auth } = useContext(Auth);
+    const { theme } = useContext(Theme);
 
 
     // useEffect(() => {
@@ -128,6 +131,7 @@ function MainPage() {
     
     return (
         <>
+            {theme.allowLandingPage && <Landing />}
             {auth && 
                 <div className={style.main}>
                     {showLoader && <Loader />}

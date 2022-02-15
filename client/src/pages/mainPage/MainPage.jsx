@@ -192,11 +192,13 @@ function MainPage() {
                                 }
                             </div>
                         </div>
-                        <Favorites 
-                            favoriteWords={favoriteWords} 
-                            updateFavorite={updateFavorite} 
-                            toggleLoader={() => setShowLoader(!showLoader)} 
-                        />
+                        <div className={style.favorites}>
+                            <Favorites 
+                                favoriteWords={favoriteWords} 
+                                updateFavorite={updateFavorite} 
+                                toggleLoader={() => setShowLoader(!showLoader)} 
+                            />
+                        </div>
                     </div>
                 </div>
             }

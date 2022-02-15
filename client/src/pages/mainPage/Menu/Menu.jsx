@@ -11,21 +11,21 @@ const Menu = ({ show, toggleMenuHandler }) => {
     const { theme, updateTheme, onChangeTheme } = useContext(Theme);
 
     const [localTheme, setLocalTheme] = useState(theme);
-    const [hideColorPicker, setHideColorPicker] = useState(false);
 
     useEffect(() => {
-            const doc = document.documentElement
+        const doc = document.documentElement
 
-            doc.style.setProperty('--body-color', localTheme.bodyBackgroundColor);
+        doc.style.setProperty('--body-color', localTheme.bodyBackgroundColor);
 
-            doc.style.setProperty('--main-color', localTheme.objectColor);
-            doc.style.setProperty('--main-color-hover', localTheme.objectColorHover);
+        doc.style.setProperty('--main-color', localTheme.objectColor);
+        doc.style.setProperty('--main-color-hover', localTheme.objectColorHover);
 
-            doc.style.setProperty('--text-color', localTheme.textColor);
-            doc.style.setProperty('--button-text-color', localTheme.buttonTextColor);
+        doc.style.setProperty('--text-color', localTheme.textColor);
+        doc.style.setProperty('--button-text-color', localTheme.buttonTextColor);
     }, [theme, localTheme])
     
     const handleChange = name => event => {
+        if(name === 'allowLandingPage') setLocalTheme({ ...theme, [name]: event.target.checked })
         onChangeTheme(name, event);
     }
     

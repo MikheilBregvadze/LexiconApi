@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { ChromePicker } from "react-color";
+import { ChromePicker } from "react-color"
+import { useClickOutside } from '../../../../services/context/outsideClick'
 import style from './ColorPicker.module.css'
 
 const ColorPicker = ({name, localTheme, theme, handleChangePicker, returnPreviouseColor}) => {
@@ -7,7 +8,9 @@ const ColorPicker = ({name, localTheme, theme, handleChangePicker, returnPreviou
     const handleChangePicker1 = (e) => {
         handleChangePicker(e, name)
     }
-
+    let domNode = useClickOutside(() => {
+        setshowColorPicker(false);
+    })
   return (
       <>
         <div className={style.apply}>
@@ -24,7 +27,7 @@ const ColorPicker = ({name, localTheme, theme, handleChangePicker, returnPreviou
             />
         </div>
         {showColorPicker && 
-            <div className={style.colorPicker}>
+            <div className={style.colorPicker} ref={domNode}>
                 <ChromePicker
                     color={localTheme}
                     onChange={handleChangePicker1}

@@ -92,15 +92,29 @@ input:-webkit-autofill:active {
 .icon-xl {
     font-size: 30px;
     transition: .2s;
-    color: var(--main-icon-color);
+    color: var(--main-color);
 }
 
-.icon-xl:hover {
-    color: var(--main-icon-color-hover);
+.icon-md {
+    font-size: 23px;
+    transition: .2s;
+    color: var(--main-color);
+}
+
+
+.icon-md:hover {
+    color: var(--main-color);
+}
+.icon-xl:hover, .icon-xl.active,
+.icon-md:hover, .icon-md.active{
+    color: var(--main-color-hover);
 }
 
 @media only screen and (max-width: 660px) {
     .section {
         height: calc(100% - 65px);
+    }
+    .icon-md {
+        font-size: 18px;
     }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import FontAwesome from "react-fontawesome"
 import EditItem from './EditItem/EditItem'
 import {
     GetClientAllWords,
@@ -31,13 +32,6 @@ function MainPage() {
     const [showLoader, setShowLoader] = useState(false);
     const { auth } = useContext(Auth);
     const { theme } = useContext(Theme);
-
-
-    // useEffect(() => {
-    //     const doc = document.documentElement
-    //     doc.style.setProperty('--main-color', 'red');
-    // })
-
 
     const deleteWord = (id) => {
         setShowLoader(true);
@@ -151,11 +145,21 @@ function MainPage() {
                                     <div 
                                         className={style.exchange} 
                                         onClick={() => setIsExchanged(!isExchanged)}  
-                                    />
+                                    >
+                                        <FontAwesome
+                                            name="retweet"
+                                            className={`icon-xl`}
+                                        />
+                                    </div>
                                     <div 
                                         className={style.fullScreen} 
                                         onClick={() => setShowModalView(true)}    
-                                    />
+                                    >
+                                        <FontAwesome
+                                            name="arrows-alt"
+                                            className={`icon-xl`}
+                                        />
+                                    </div>
                                     
                                 </div>}
                             </div>

@@ -39,6 +39,11 @@
 
 .cog {
     cursor: pointer;
+    transition: all .3s linear;
+}
+
+.animate {
+    transform: rotate(45deg);
 }
 
 .setting {

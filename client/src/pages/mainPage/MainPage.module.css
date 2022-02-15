@@ -60,11 +60,11 @@
     cursor: pointer;
     margin-top: 20px;
     transition: all .2s ease-in-out;
-    background: url('../../assets/images/icons/fullScreen.png');
+    /* background: url('../../assets/images/icons/fullScreen.png'); */
 }
 
 .fullScreen:hover {
-    background: url('../../assets/images/icons/fullScreenHover.png');
+    /* background: url('../../assets/images/icons/fullScreenHover.png'); */
 }
 
 .words {
@@ -104,11 +104,11 @@
     cursor: pointer;
     margin-top: 20px;
     margin-right: 10px;
-    background: url('../../assets/images/icons/exchange.png');
+    /* background: url('../../assets/images/icons/exchange.png'); */
 }
 
 .exchange:hover {
-    background: url('../../assets/images/icons/exchangeHover.png');
+    /* background: url('../../assets/images/icons/exchangeHover.png'); */
 }
 
 .arrow {

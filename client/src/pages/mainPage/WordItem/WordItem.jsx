@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import FontAwesome from "react-fontawesome";
 
 import style from './WordItem.module.css'
 
@@ -26,24 +27,52 @@ const WordItem = ({ word, index, deleteSentence, addInSentences, addToFavorite, 
                     </ul>
                 }
             </div>
-            <div className={`${style.arrow} ${showOptions ? style.active : ''}`} onClick={() => setShowOptions(!showOptions)} />
+            <div 
+                className={`${style.arrow} ${showOptions ? style.active : ''}`} 
+                onClick={() => setShowOptions(!showOptions)} 
+            >
+                <FontAwesome
+                    name="arrow-left"
+                    className="icon-md"
+                />
+            </div>
             <div className={`${style.options} ${showOptions ? style.active : ''}`}>
                 <div
                     className={`${style.addInSentences}`}
                     onClick={() => addInSentences(word._id)}
-                />
+                >
+                    <FontAwesome
+                        name="plus"
+                        className="icon-md"
+                    />
+                </div>
                 <div
-                    className={`${style.favorite} ${word.isFavorite ? style.activeFavorite : ''}`}
+                    className={`${style.favorite}`}
                     onClick={() => addToFavorite(word._id)}
-                />
+                >
+                    <FontAwesome
+                        name="star"
+                        className={`icon-md ${word.isFavorite ? 'active' : ''}`}
+                    />
+                </div>
                 <div
                     onClick={() => editItem(word)}
                     className={style.edit}
-                />
+                >
+                    <FontAwesome
+                        name="wrench"
+                        className={`icon-md`}
+                    />
+                </div>
                 <div
                     className={style.remove}
                     onClick={(e) => deleteWord(word._id, e)}
-                />
+                >
+                    <FontAwesome
+                        name="trash"
+                        className={`icon-md`}
+                    />
+                </div>
             </div>
         </div>
     )

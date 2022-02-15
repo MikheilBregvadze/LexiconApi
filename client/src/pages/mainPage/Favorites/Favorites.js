@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DeleteFavoriteWordById } from '../../../services/services';
+import FontAwesome from "react-fontawesome";
+
 import style from './Favorites.module.css';
 
 function Favorites(props) {
@@ -27,7 +29,12 @@ function Favorites(props) {
                             <div
                                 className={style.remove}
                                 onClick={(e) => {deleteFavoriteWord(word._id, e); props.toggleLoader()}}
+                            >
+                            <FontAwesome
+                                name="trash"
+                                className={`icon-md`}
                             />
+                        </div>
                         </div>
                     </div>
                 )) : <div>No favorite words yet!</div>

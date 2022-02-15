@@ -26,7 +26,6 @@ const Menu = ({ show, toggleMenuHandler }) => {
         setBodyBackgroundColor(color.hex);
     }; 
     
-
     return ( 
         <aside className={`${style.menu} ${show ? style.active : ''}`}>
             <CustomCloseButton  closeModal={toggleMenuHandler}  />

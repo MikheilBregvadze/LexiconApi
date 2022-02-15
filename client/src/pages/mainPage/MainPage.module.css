@@ -2,6 +2,12 @@
     width: 90%;
     height: 100%;
     margin: 0 auto;
+    transition: all .3s;
+}
+.testingMode {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
 }
 
 .main form {

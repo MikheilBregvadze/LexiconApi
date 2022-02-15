@@ -30,7 +30,7 @@ const ColorPicker = ({name, localTheme, theme, handleChangePicker, returnPreviou
             <div className={style.colorPicker}>
                 <ChromePicker
                     color={localTheme}
-                    onChange={handleChangePicker1}
+                    onChangeComplete={handleChangePicker1}
                 />
             </div>
         }

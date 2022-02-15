@@ -13,6 +13,7 @@ import { Theme } from '../../services/context/themeContext'
 import Favorites from './Favorites/Favorites'
 import ModalView from './ModalView/ModalView'
 import AddSentences from './AddSentences/AddSentences'
+import TestingMode from './TestingMode/TestingMode'
 import  WordItem  from './WordItem/WordItem'
 import AddWord from './AddWord/AddWord'
 import Landing from '../landing/Landing'
@@ -30,6 +31,7 @@ function MainPage() {
     const [showModalView, setShowModalView] = useState(false);
     const [showSentences, setShowSentences] = useState(null);
     const [showLoader, setShowLoader] = useState(false);
+    const [testingMode, setTestingMode] = useState(false);
     const { auth } = useContext(Auth);
     const { theme } = useContext(Theme);
 
@@ -127,7 +129,7 @@ function MainPage() {
         <>
             {theme.allowLandingPage && <Landing />}
             {auth && 
-                <div className={style.main}>
+                <div className={`${style.main} ${testingMode ? style.testingMode : ''}`}>
                     {showLoader && <Loader />}
                     <AddWord 
                         setWords={words => setWords(words)} 
@@ -142,6 +144,15 @@ function MainPage() {
                             <div className={style.rowHeader}>
                                 <h1>Words / Count: {words.length}</h1>
                                 {words.length > 0 && <div className={style.wordsMenu}>
+                                    <div 
+                                        className={style.exchange} 
+                                        onClick={() => setTestingMode(!testingMode)}  
+                                    >
+                                        <FontAwesome
+                                            name="file"
+                                            className={`icon-xl`}
+                                        />
+                                    </div>
                                     <div 
                                         className={style.exchange} 
                                         onClick={() => setIsExchanged(!isExchanged)}  
@@ -208,6 +219,12 @@ function MainPage() {
                     isExchanged={isExchanged}
                     modalIsOpen={showModalView} 
                     closeModal={() => setShowModalView(!showModalView)} 
+                />
+            }
+            { testingMode &&  
+                <TestingMode 
+                    words={words} 
+                    goBack={() => setTestingMode(false)}
                 />
             }
             <EditItem 

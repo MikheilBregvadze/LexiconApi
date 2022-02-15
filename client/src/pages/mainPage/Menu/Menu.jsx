@@ -39,6 +39,7 @@ const Menu = ({ show, toggleMenuHandler }) => {
 
     const saveTheme = () => {
         updateTheme(localTheme);
+        toggleMenuHandler();
     }
     
     return ( 

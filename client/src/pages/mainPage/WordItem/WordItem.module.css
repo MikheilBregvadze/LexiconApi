@@ -152,6 +152,7 @@
 
     .options div {
         opacity: 0;
+        margin-right: 5px;
     }
 
     .active.options {
@@ -185,7 +186,7 @@
     }
 
     .arrow.active {
-        transform: rotate(180deg);
+        transform: rotate(180deg) translateY(-2px);
         transition: all .2s;
     }
     

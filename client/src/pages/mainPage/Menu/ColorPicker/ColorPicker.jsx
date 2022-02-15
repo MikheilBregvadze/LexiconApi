@@ -12,7 +12,7 @@ const ColorPicker = ({name, localTheme, theme, handleChangePicker, returnPreviou
         setshowColorPicker(false);
     })
   return (
-      <>
+      <div ref={domNode}>
         <div className={style.apply}>
             {(localTheme !== theme) && showColorPicker && <div
                 className={style.toggleColorPicker}  
@@ -27,14 +27,14 @@ const ColorPicker = ({name, localTheme, theme, handleChangePicker, returnPreviou
             />
         </div>
         {showColorPicker && 
-            <div className={style.colorPicker} ref={domNode}>
+            <div className={style.colorPicker}>
                 <ChromePicker
                     color={localTheme}
                     onChange={handleChangePicker1}
                 />
             </div>
         }
-      </>
+      </div>
   )
 }
 

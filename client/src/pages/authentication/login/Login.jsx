@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Auth } from "../../../services/context/useAuthentication"
 import { ClientAuthorization } from '../../../services/services'
+import { useClickOutside } from '../../../services/context/outsideClick'
 import Input from '../../../components/customInput/Input'
 import Button from '../../../components/customButton/Button'
 import style from './Login.module.css'
@@ -31,8 +32,11 @@ function Login() {
                 setError({ username: error.response.data.error })
             })
     }
+    let domNode = useClickOutside(() => {
+        setError({})
+    })
     return (
-        <form className={style.form} onSubmit={handleSubmit}>
+        <form className={style.form} onSubmit={handleSubmit} ref={domNode}>
             <div className={style.formGroup}>
                 <label htmlFor="username"></label>
                 <Input

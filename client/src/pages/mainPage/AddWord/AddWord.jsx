@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useClickOutside } from '../../../services/context/outsideClick';
 import Input from '../../../components/customInput/Input';
 import Button from '../../../components/customButton/Button';
 import { ClientAddWord } from '../../../services/services';
@@ -42,9 +43,12 @@ const AddWord = ({ setWords, toggleLoader }) => {
         setErrorMessage(null);
         setForm({ ...form, [input]: event.target.value });
         setErrors({...errors, [input]: null });
-    }
+    }    
+    let domNode = useClickOutside(() => {
+        setErrors({})
+    })
     return (
-        <form onSubmit={submitForm}>
+        <form onSubmit={submitForm} ref={domNode}>
             <div className={style.formGroup}>
                 <label htmlFor="national" />
                 <Input

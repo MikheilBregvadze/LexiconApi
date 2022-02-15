@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { useClickOutside } from '../../../services/context/outsideClick'
 import CustomModal from '../../../components/customModal/customModal'
 import CustomCloseButton from '../../../components/closeButton/CustomCloseButton'
 import Input from '../../../components/customInput/Input'
@@ -52,6 +53,9 @@ function Registration({ modalIsOpen }) {
         })
         setShowModal(false);
     }
+    let domNode = useClickOutside(() => {
+        setError({})
+    })
     return (
         <>
             <Button 
@@ -64,7 +68,7 @@ function Registration({ modalIsOpen }) {
                 closeModal={closeModalHandler}
             >
                 <CustomCloseButton  closeModal={closeModalHandler} />
-                <form className={style.form} onSubmit={handleSubmit}>
+                <form className={style.form} onSubmit={handleSubmit} ref={domNode}>
                     <div className={style.formGroup}>
                         <label htmlFor="username"></label>
                         <Input

@@ -28,9 +28,9 @@
 
     --main-color: antiquewhite;
     --main-color-hover: rgb(227, 211, 190);
-
-    --main-icon-color: antiquewhite;
-    --main-icon-color-hover: rgb(227, 211, 190);
+    
+    --text-color: #fff;
+    --button-text-color: #000;
 }
 
 * {
@@ -47,7 +47,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    color: #fff;
+    color: var(--text-color);
     overflow: hidden;
     user-select: none;
     font-family: 'Medium';

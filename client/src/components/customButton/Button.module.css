@@ -3,7 +3,7 @@
     padding: 12px 25px;
     border: none;
     outline: none;
-    color: #000;
+    color: var(--button-text-color);
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Medium';

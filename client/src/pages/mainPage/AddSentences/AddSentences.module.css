@@ -29,7 +29,7 @@
     width: 100%;
     resize: none;
     min-height: 43px;
-    color: #fff;
+    color: var(--text-color);
     padding-top: 11px;
     padding-left: 10px;
     border-radius: 5px;
@@ -43,7 +43,7 @@
 }
 
 .messageTextField::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 1);
+    color: var(--text-color);
 }
 
 .messageTextField:focus-visible {

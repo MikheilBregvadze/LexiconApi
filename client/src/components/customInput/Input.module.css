@@ -1,7 +1,7 @@
 .input {
     width: 240px;
     height: 43px;
-    color: #fff;
+    color: var(--text-color);
     border-radius: 5px;
     padding-left: 10px;
     font-family: 'Regular';
@@ -14,7 +14,7 @@
 }
 
 .input::placeholder {
-    color: #fff;
+    color: var(--text-color);
 }
 
 input:-webkit-autofill,

@@ -134,6 +134,11 @@
     .row {
         height: calc(100% - 210px);
     }
+    .row h1 {
+        font-size: 17px;
+        font-weight: normal;
+        letter-spacing: 1px;
+    }
     .main form {
         flex-direction: column;
     }
@@ -151,6 +156,10 @@
     .items {
         width: 100%;
         min-width: 100%;
+    }
+
+    .items {
+        margin-top: 0;
     }
     
     .item {

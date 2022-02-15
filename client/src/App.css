@@ -121,4 +121,8 @@ input:-webkit-autofill:active {
     .icon-md:hover {
         color: var(--main-color);
     }
+
+    .icon-xl {
+        font-size: 25px;
+    }
 }

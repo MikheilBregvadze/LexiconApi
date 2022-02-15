@@ -197,7 +197,7 @@
     .words.active {
         width: calc(100% - 170px);
     }
-}
-
-@media only screen and (max-width: 360px) {
+    .national {
+        padding: 8px 0;
+    }
 }

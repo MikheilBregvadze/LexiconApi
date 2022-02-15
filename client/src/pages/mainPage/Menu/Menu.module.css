@@ -40,6 +40,10 @@
 }
 
 @media only screen and (max-width: 660px) {
+    
+    .title {
+        font-size: 16px;
+    }
     .menu {
         width: 240px;
     }

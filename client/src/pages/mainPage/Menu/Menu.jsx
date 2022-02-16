@@ -44,8 +44,11 @@ const Menu = ({ show, toggleMenuHandler }) => {
     
     return ( 
         <aside className={`${style.menu} ${show ? style.active : ''}`}>
+
             <CustomCloseButton  closeModal={toggleMenuHandler}  />
+
             <div className={style.meneItems}>
+
                 <div className={style.group}>
                     <p>Animation</p>
                     <CustomCheckbox 
@@ -56,28 +59,19 @@ const Menu = ({ show, toggleMenuHandler }) => {
                 </div>
                 
                 <h3 className={style.title}>You can to change colors:</h3>
+
                 <div className={style.reverse}>
-                    <div className={style.group}>
-                        <p>Objects</p>
-                        <ColorPicker 
-                            name="objectColor"
-                            localTheme={localTheme.objectColor} 
-                            theme={theme.objectColor} 
-                            handleChangePicker={(color, name) => handleChangePicker(name, color.hex)} 
-                            returnPreviouseColor={() => returnPreviouseColor('objectColor', theme.objectColor)} 
-                        />
-                    </div>
 
                     <div className={style.group}>
-                        <p>Objects Hover</p>
+                        <p>Button Text</p>
                         <ColorPicker 
-                            name="objectColorHover"
-                            localTheme={localTheme.objectColorHover} 
-                            theme={theme.objectColorHover} 
+                            name="buttonTextColor"
+                            localTheme={localTheme.buttonTextColor} 
+                            theme={theme.buttonTextColor} 
                             handleChangePicker={(color, name) => handleChangePicker(name, color.hex)} 
-                            returnPreviouseColor={() => returnPreviouseColor('objectColorHover', theme.objectColorHover)} 
+                            returnPreviouseColor={() => returnPreviouseColor('buttonTextColor', theme.buttonTextColor)} 
                         />
-                    </div>
+                    </div>   
                     
                     <div className={style.group}>
                         <p>Text</p>
@@ -91,15 +85,27 @@ const Menu = ({ show, toggleMenuHandler }) => {
                     </div>
 
                     <div className={style.group}>
-                        <p>Button Text</p>
+                        <p>Objects Hover</p>
                         <ColorPicker 
-                            name="buttonTextColor"
-                            localTheme={localTheme.buttonTextColor} 
-                            theme={theme.buttonTextColor} 
+                            name="objectColorHover"
+                            localTheme={localTheme.objectColorHover} 
+                            theme={theme.objectColorHover} 
                             handleChangePicker={(color, name) => handleChangePicker(name, color.hex)} 
-                            returnPreviouseColor={() => returnPreviouseColor('buttonTextColor', theme.buttonTextColor)} 
+                            returnPreviouseColor={() => returnPreviouseColor('objectColorHover', theme.objectColorHover)} 
                         />
-                    </div>                
+                    </div>  
+
+                    <div className={style.group}>
+                        <p>Objects</p>
+                        <ColorPicker 
+                            name="objectColor"
+                            localTheme={localTheme.objectColor} 
+                            theme={theme.objectColor} 
+                            handleChangePicker={(color, name) => handleChangePicker(name, color.hex)} 
+                            returnPreviouseColor={() => returnPreviouseColor('objectColor', theme.objectColor)} 
+                        />
+                    </div>     
+
                     {!theme.allowLandingPage && <div className={style.group}>
                         <p>Background</p>
                         <ColorPicker 
@@ -110,8 +116,11 @@ const Menu = ({ show, toggleMenuHandler }) => {
                             returnPreviouseColor={() => returnPreviouseColor('bodyBackgroundColor', theme.bodyBackgroundColor)} 
                         />
                     </div>}
+
                 </div>
+
                 <Button title="Save" clickHandler={saveTheme} type="button" />
+
             </div>
         </aside>
     )

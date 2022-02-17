@@ -23,6 +23,11 @@
     src: url("./assets/fonts/GE_Regular.ttf");
 }
 
+@font-face {
+    font-family: "Jost-Italic";
+    src: url("./assets/fonts/Jost-Italic.ttf");
+}
+
 :root {
     --body-color: #282525;
 
@@ -50,7 +55,7 @@ body {
     color: var(--text-color);
     overflow: hidden;
     user-select: none;
-    font-family: 'Medium';
+    font-family: 'Jost-Italic';
     -webkit-user-select: none;
     background: var(--body-color);
 }

@@ -35,12 +35,10 @@
     border: 1px solid var(--main-color);
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .items::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .items {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */

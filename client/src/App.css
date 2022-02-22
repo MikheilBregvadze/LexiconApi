@@ -55,7 +55,7 @@ body {
     color: var(--text-color);
     overflow: hidden;
     user-select: none;
-    font-family: 'Jost-Italic';
+    font-family: 'Regular';
     -webkit-user-select: none;
     background: var(--body-color);
 }

@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Theme } from '../../../services/context/themeContext'
+import { Auth } from '../../../services/context/useAuthentication'
 import Button from '../../../components/customButton/Button'
 import CustomCheckbox from '../../../components/customCheckbox/CustomCheckbox'
 import CustomCloseButton from '../../../components/closeButton/CustomCloseButton'
@@ -9,6 +10,7 @@ import style from './Menu.module.css'
 
 const Menu = ({ show, toggleMenuHandler }) => {
     const { theme, updateTheme, onChangeTheme } = useContext(Theme);
+    const { logOut } = useContext(Auth);
 
     const [localTheme, setLocalTheme] = useState(theme);
 
@@ -46,6 +48,12 @@ const Menu = ({ show, toggleMenuHandler }) => {
         <aside className={`${style.menu} ${show ? style.active : ''}`}>
 
             <CustomCloseButton  closeModal={toggleMenuHandler}  />
+            <div 
+                onClick={() => logOut(  )}
+                className={style.exit}
+            >
+                Exit
+            </div>
 
             <div className={style.meneItems}>
 

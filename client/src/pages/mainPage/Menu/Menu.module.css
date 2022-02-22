@@ -11,6 +11,13 @@
     transition: all .3s linear;
 }
 
+.exit {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    cursor: pointer;
+}
+
 .meneItems {
     padding-top: 50px;
     padding-left: 20px;

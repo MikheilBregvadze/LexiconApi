@@ -186,7 +186,7 @@ function MainPage() {
                                         addInSentences={addInSentences}
                                         deleteSentence={deleteSentence}
                                     />
-                                )) : words.length > 0 ? words.map((word, index) => (
+                                )) : words.length > 0 ? [...words].reverse().map((word, index) => (
                                     <WordItem 
                                         key={index}
                                         word={word}

@@ -31,7 +31,7 @@
     overflow: auto;
     max-height: calc(100% - 80px);
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     border: 1px solid var(--main-color);
 }
 

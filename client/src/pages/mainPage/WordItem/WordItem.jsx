@@ -20,7 +20,12 @@ const WordItem = ({ word, index, deleteSentence, addInSentences, addToFavorite, 
                                     title='Remove sentence' 
                                     className={style.removeSentence}
                                     onClick={() => deleteSentence(word._id, sentence._id)}
-                                />
+                                >
+                                    <FontAwesome
+                                        name="times"
+                                        className="icon-md"
+                                    />
+                                </span>
                                 {sentence.word}
                             </li>
                         ))}

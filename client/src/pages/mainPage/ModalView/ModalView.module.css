@@ -2,6 +2,8 @@
     width: 400px;
     margin: auto;
     margin-top: 40px;
+    overflow: scroll;
+    height: calc(100% - 80px);
     border-top: 1px solid var(--main-color);
     border-bottom: 1px solid var(--main-color);
 }

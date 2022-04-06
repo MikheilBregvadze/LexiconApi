@@ -110,7 +110,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    transform: scale(0.7) rotate(45deg);
+    transform: scale(0.7) rotate(0);
 }
 .arrow {
     display: none;

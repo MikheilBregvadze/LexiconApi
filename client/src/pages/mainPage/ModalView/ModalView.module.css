@@ -61,7 +61,8 @@
 @media only screen and (max-width: 660px) {
     .content {
         width: 90%;
-        max-height: calc(100% - 80px);
+        /* max-height: calc(100% - 80px); */
+        max-height: calc(100% - 60px);
         margin-top: 60px;
         overflow: auto;
     }

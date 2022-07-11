@@ -1,15 +1,15 @@
 .content {
-    width: 400px;
+    max-width: 600px;
+    min-width: 400px;
     margin: auto;
     margin-top: 40px;
     overflow: scroll;
     height: calc(100% - 62px);
     border-top: 1px solid var(--main-color);
-    border-bottom: 1px solid var(--main-color);
 }
 
 .content .item:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid var(--main-color);
 }
 
 .item:first-child {
@@ -63,6 +63,7 @@
 @media only screen and (max-width: 660px) {
     .content {
         width: 90%;
+        min-width: 90%;
         /* max-height: calc(100% - 80px); */
         max-height: calc(100% - 60px);
         margin-top: 60px;

@@ -20,14 +20,14 @@
 }
 
 .national {
-    width: 232px;
+    width: calc(50% - 10px);
     padding: 15px 0;
     margin-left: 20px;
     font-family: "GE_Regular";
 }
 
 .foreign {
-    width: 232px;
+    width: calc(50% - 10px);
 }
 
 .isExchanged .national {

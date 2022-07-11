@@ -49,7 +49,10 @@ const Menu = ({ show, toggleMenuHandler }) => {
 
             <CustomCloseButton  closeModal={toggleMenuHandler}  />
             <div 
-                onClick={() => logOut(  )}
+                onClick={() => {
+                    logOut();
+                    toggleMenuHandler();
+                }}
                 className={style.exit}
             >
                 Exit

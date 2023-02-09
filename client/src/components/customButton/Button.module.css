@@ -1,0 +1,16 @@
+.button {
+    height: fit-content;
+    padding: 12px 25px;
+    border: none;
+    outline: none;
+    color: var(--button-text-color);
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Medium';
+    background: var(--main-color);
+    transition: all .2s ease-in-out;
+}
+
+.button:hover {
+    background: var(--main-color-hover);
+}

@@ -1,0 +1,31 @@
+
+.toggleColorPicker {
+    position: relative;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    margin: 1px 10px 0 15px;
+}
+
+.toggleColorPicker::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    top: -6px;
+    left: -6px;
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+}
+
+.colorPicker {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    right: 0;
+    top: 55px;
+}
+
+.apply {
+    display: flex;
+}

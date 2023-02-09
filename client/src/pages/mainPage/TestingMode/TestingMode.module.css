@@ -1,0 +1,57 @@
+.row {
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+    animation: mymove .8s;
+}
+
+@keyframes mymove {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.row h2 {
+    font-size: 25px;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row h4 {
+    font-size: 20px;
+    font-weight: normal;
+    padding: 10px 0 20px 0;
+}
+
+.formGroup {
+    padding-bottom: 20px;
+}
+
+.error {
+    position: absolute;
+    display: block;
+    color: red;
+    font-size: 14px;
+}
+
+.goHome {
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 15px;
+}
+
+.retry {
+    font-size: 25px;
+    padding-right: 15px;
+}
+
+.finised {
+    cursor: pointer;
+    padding-top: 10px;
+}

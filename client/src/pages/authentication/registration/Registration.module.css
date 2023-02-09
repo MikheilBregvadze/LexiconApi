@@ -1,0 +1,44 @@
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.formGroup {
+    width: 400px;
+}
+
+.formGroup input {
+    width: 100%;
+}
+
+.form button {
+    width: 400px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.error {
+    display: block;
+    color: red;
+    font-size: 13px;
+    padding-top: 2px;
+}
+
+@media only screen and (max-width: 660px) {
+    .formGroup {
+        width: 80%;
+    }
+    
+    .formGroup input {
+        width: 100%;
+    }
+    
+    .form button {
+        width: 80%;
+    }
+}

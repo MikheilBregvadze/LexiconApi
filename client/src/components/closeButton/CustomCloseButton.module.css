@@ -1,0 +1,9 @@
+.close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    top: 15px;
+    right: 15px;
+    /* background: url("../../assets/images/icons/close.png"); */
+}

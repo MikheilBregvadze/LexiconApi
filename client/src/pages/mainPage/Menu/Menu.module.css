@@ -1,0 +1,58 @@
+.menu {
+    position: absolute;
+    z-index: 10;
+    width: 350px;
+    height: 100vh;
+    top: 0;
+    opacity: 0;
+    right: -350px;
+    backdrop-filter: blur(5px);
+    background: #000000bf !important;
+    transition: all .3s linear;
+}
+
+.exit {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    cursor: pointer;
+}
+
+.meneItems {
+    padding-top: 50px;
+    padding-left: 20px;
+}
+
+.menu.active {
+    right: 0;
+    opacity: 1;
+}
+
+.title {
+    padding: 10px 20px 10px 0;
+}
+
+.group {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px 10px 0;
+}
+
+.reverse {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 660px) {
+    
+    .title {
+        font-size: 16px;
+    }
+    .menu {
+        width: 240px;
+    }
+}

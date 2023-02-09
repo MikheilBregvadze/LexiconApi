@@ -1,0 +1,36 @@
+.formGroup {
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+.form {
+    width: 240px;
+    display: flex;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    flex-direction: column;
+}
+
+.error {
+    display: block;
+    color: red;
+    font-size: 13px;
+    padding-top: 2px;
+}
+
+@media only screen and (max-width: 660px) {
+    .form {
+        margin-right: 0;
+        margin-bottom: 10px;
+        flex-direction: column;
+    }
+
+    .formGroup {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    .formGroup input {
+        width: 100%;
+    }
+}

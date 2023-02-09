@@ -1,0 +1,50 @@
+.popup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 400px;
+    height: max-content;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--main-color);
+}
+
+.popup h3 {
+    text-align: center;
+    font-weight: normal;
+    padding: 10px;
+}
+
+.formGroup {
+    margin-bottom: 14px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.errorMessage,
+.error {
+    display: block;
+    color: red;
+    font-size: 14px;
+    padding-bottom: 2px;
+}
+
+.errorMessage {
+    padding: 10px;
+}
+
+@media only screen and (max-width: 660px) { 
+    .popup {
+        width: 90%;
+    }
+}

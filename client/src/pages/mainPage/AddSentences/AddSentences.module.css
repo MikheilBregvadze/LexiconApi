@@ -1,0 +1,74 @@
+.popup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    padding: 25px 0;
+    height: max-content;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid var(--main-color);
+}
+
+.popup form {
+    width: 100%;
+}
+
+.popup form h3 {
+    text-align: center;
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+
+.messageTextField {
+    width: 100%;
+    resize: none;
+    min-height: 43px;
+    color: var(--text-color);
+    padding-top: 11px;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-family: 'Regular';
+    background: transparent;
+    border: 1px solid var(--main-color);
+}
+
+.messageTextField::-webkit-scrollbar {
+    display: none;
+}
+
+.messageTextField::-webkit-input-placeholder {
+    color: var(--text-color);
+}
+
+.messageTextField:focus-visible {
+    outline: none;
+}
+
+.formGroup {
+    width: 80%;
+    margin: auto;
+}
+
+.errorMessage,
+.error {
+    display: block;
+    color: red;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.errorMessage {
+    padding: 10px;
+}
+
+@media only screen and (max-width: 660px) {
+    .popup {
+        width: 90%;
+    }
+}

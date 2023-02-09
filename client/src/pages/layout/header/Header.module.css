@@ -1,0 +1,70 @@
+.header {
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu,
+.exit {
+    cursor: pointer;
+}
+
+.menu:hover {
+    color: var(--main-color-hover);
+    transition: all .2s ease-in-out;
+}
+
+.exit:hover {
+    color: var(--main-color-hover);
+    transition: all .2s ease-in-out;
+}
+
+.auth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    margin: auto;
+    height: 100%;
+    justify-content: center;
+}
+
+.cog {
+    cursor: pointer;
+    transition: all .3s linear;
+}
+
+.animate {
+    transform: rotate(45deg);
+}
+
+.setting {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    height: 0;
+    opacity: 0;
+    transition: all .2s linear;
+}
+
+
+.dropdown.active {
+    opacity: 1;
+    height: 50px;
+}
+
+@media only screen and (max-width: 660px) {
+    .auth {
+        flex-direction: column;
+    }
+}

@@ -76,6 +76,7 @@ body {
 .ReactModal__Overlay  {
     top: 0;
     left: 0;
+    z-index: 2;
     height: 100%;
     border: none !important;
     outline: none !important;

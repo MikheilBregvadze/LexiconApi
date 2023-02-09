@@ -34,6 +34,7 @@
     width: 240px;
     margin: auto;
     height: 100%;
+    z-index: 1;
     justify-content: center;
 }
 

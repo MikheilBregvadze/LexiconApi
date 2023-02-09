@@ -1,25 +1,25 @@
-import Header from "./pages/layout/header/Header";
-import { Theme, useTheme } from "./services/context/themeContext";
-import { Auth, useAuthentication } from "./services/context/useAuthentication";
-import MainPage from "./pages/mainPage/MainPage";
-
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
-    const theme = useTheme();
-    const auth = useAuthentication();
-    return (
-        <Auth.Provider value={auth}>
-            <Theme.Provider value={theme}>
-                <header className="header">
-                    <Header />
-                </header>
-                <section className="section">
-                    <MainPage />
-                </section>
-            </Theme.Provider>
-        </Auth.Provider>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;

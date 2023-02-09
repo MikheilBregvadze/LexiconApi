@@ -10,7 +10,7 @@ import style from './Menu.module.css'
 
 const Menu = ({ show, toggleMenuHandler }) => {
     const { theme, updateTheme, onChangeTheme } = useContext(Theme);
-    const { logOut } = useContext(Auth);
+    const { auth, logOut } = useContext(Auth);
 
     const [localTheme, setLocalTheme] = useState(theme);
 
@@ -48,15 +48,18 @@ const Menu = ({ show, toggleMenuHandler }) => {
         <aside className={`${style.menu} ${show ? style.active : ''}`}>
 
             <CustomCloseButton  closeModal={toggleMenuHandler}  />
-            <div 
-                onClick={() => {
-                    logOut();
-                    toggleMenuHandler();
-                }}
-                className={style.exit}
-            >
-                Exit
-            </div>
+            
+            {auth && 
+                <div 
+                    onClick={() => {
+                        logOut();
+                        toggleMenuHandler();
+                    }}
+                    className={style.exit}
+                >
+                    Exit
+                </div>
+            }
 
             <div className={style.meneItems}>
 
